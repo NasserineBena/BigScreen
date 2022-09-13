@@ -5,6 +5,7 @@ namespace App\Http\Controllers\API;
 use App\Http\Controllers\Controller;
 use App\Models\QuestionType;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class QuestionTypeController extends Controller
 {
@@ -15,10 +16,17 @@ class QuestionTypeController extends Controller
      */
     public function index()
     {
+        $allQuestions = new QuestionType;
         $allQuestions = QuestionType::all();
-
+        foreach($allQuestions as $question){
+            if($question->type === "A"){
+                $question->response_possibility = json_decode($question->response_possibility);
+            }
+            
+        }
+         echo gettype($allQuestions[1]->response_possibility);
         // On retourne les informations des utilisateurs en JSON
-        return response()->json($allQuestions);
+        return $allQuestions;
     }
 
 
