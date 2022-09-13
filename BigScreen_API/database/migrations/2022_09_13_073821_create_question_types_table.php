@@ -13,11 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('question_type', function (Blueprint $table) {
+        Schema::create('question_types', function (Blueprint $table) {
             $table->id();
             $table->string("question")->nullable(false);
             $table->json("response_possibility")->nullable();
             $table->enum('type', ['A','B','C'])->nullable(false);
+            $table->timestamps();
         });
     }
 
@@ -28,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('question_type');
+        Schema::dropIfExists('question_types');
     }
 };
