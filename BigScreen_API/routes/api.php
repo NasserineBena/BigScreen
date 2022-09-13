@@ -21,7 +21,7 @@ use App\Http\Controllers\API\UserController;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
-Route::apiResource("questionType", QuestionTypeController::class)->except(['create','edit','delete']);
+Route::apiResource("question", QuestionTypeController::class)->except(['create','edit','delete']);
 Route::apiResource("survey", SurveyController::class)->except(['create','edit','delete']);
 
 Route::middleware('auth:sanctum')->group(function (){

@@ -15,10 +15,18 @@ class QuestionTypeController extends Controller
      */
     public function index()
     {
-        $allQuestions = QuestionType::all();
+        $allQuestions = QuestionType::findOrFail(3)->response_possibility;
+        //echo gettype($allQuestions);
+
+        //$allQuestions = explode('","', $allQuestions);
+        //$allQuestions = explode('\"', strstr($allQuestions,'['));
+
+        $allQuestions = json_decode($allQuestions);
+
 
         // On retourne les informations des utilisateurs en JSON
-        return response()->json($allQuestions);
+        //echo gettype($allQuestions);
+        return $allQuestions[1];
     }
 
 

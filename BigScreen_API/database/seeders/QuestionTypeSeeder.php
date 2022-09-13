@@ -1,6 +1,6 @@
 <?php
-
 namespace Database\Seeders;
+
 use App\Models\QuestionType;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
