@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('survey', function (Blueprint $table) {
             $table->id();
-            $table->text('responseOne')->nullable(false)->unique();
+            $table->string('responseOne',50)->nullable(false)->unique();
             $table->text('responseTwo')->nullable(false);
             $table->text('responseThree')->nullable(false);
             $table->text('responseFour')->nullable(false);
