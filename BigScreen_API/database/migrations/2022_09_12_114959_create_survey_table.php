@@ -15,26 +15,26 @@ return new class extends Migration
     {
         Schema::create('survey', function (Blueprint $table) {
             $table->id();
-            $table->string('responseOne')->nullable(false)->unique();
-            $table->string('responseTwo')->nullable(false);
-            $table->string('responseThree')->nullable(false);
-            $table->string('responseFour')->nullable(false);
-            $table->string('responseFive')->nullable(false);
-            $table->string('responseSix')->nullable(false);
-            $table->string('responseSeven')->nullable(false);
-            $table->string('responseEight')->nullable(false);
-            $table->string('responseNine')->nullable(false);
-            $table->string('responseTen')->nullable(false);
-            $table->string('responseEleven')->nullable(false);
-            $table->string('responseTwelve')->nullable(false);
-            $table->string('responseThirteen')->nullable(false);
-            $table->string('responseFourteen')->nullable(false);
-            $table->string('responseFifteen')->nullable(false);
-            $table->string('responseSixteen')->nullable(false);
-            $table->string('responseSeventeen')->nullable(false);
-            $table->string('responseEighteen')->nullable(false);
-            $table->string('responseNineteen')->nullable(false);
-            $table->string('responseTwenty')->nullable(false);
+            $table->text('responseOne')->nullable(false)->unique();
+            $table->text('responseTwo')->nullable(false);
+            $table->text('responseThree')->nullable(false);
+            $table->text('responseFour')->nullable(false);
+            $table->text('responseFive')->nullable(false);
+            $table->text('responseSix')->nullable(false);
+            $table->text('responseSeven')->nullable(false);
+            $table->text('responseEight')->nullable(false);
+            $table->text('responseNine')->nullable(false);
+            $table->text('responseTen')->nullable(false);
+            $table->text('responseEleven')->nullable(false);
+            $table->text('responseTwelve')->nullable(false);
+            $table->text('responseThirteen')->nullable(false);
+            $table->text('responseFourteen')->nullable(false);
+            $table->text('responseFifteen')->nullable(false);
+            $table->text('responseSixteen')->nullable(false);
+            $table->text('responseSeventeen')->nullable(false);
+            $table->text('responseEighteen')->nullable(false);
+            $table->text('responseNineteen')->nullable(false);
+            $table->text('responseTwenty')->nullable(false);
             $table->timestamps();
         });
     }
