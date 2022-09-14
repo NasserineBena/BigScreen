@@ -22,9 +22,9 @@ class QuestionTypeController extends Controller
             if($question->type === "A"){
                 $question->response_possibility = json_decode($question->response_possibility);
             }
-            
+
         }
-         echo gettype($allQuestions[1]->response_possibility);
+         echo gettype($allQuestions[2]->response_possibility);
         // On retourne les informations des utilisateurs en JSON
         return $allQuestions;
     }
