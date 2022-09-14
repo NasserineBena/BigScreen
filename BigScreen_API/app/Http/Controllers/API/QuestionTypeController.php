@@ -24,7 +24,7 @@ class QuestionTypeController extends Controller
             }
 
         }
-         echo gettype($allQuestions[1]->response_possibility);
+         echo gettype($allQuestions[2]->response_possibility);
         // On retourne les informations des utilisateurs en JSON
         return $allQuestions;
     }
