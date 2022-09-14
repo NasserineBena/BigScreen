@@ -19,6 +19,12 @@ class SurveyFactory extends Factory
         $key = array_rand($arrayData);
         return $key;
     }
+
+    public function getSurveys(){
+        for($i=0; $i<20; $i++){
+        }
+    }
+
     public function definition()
     {
         $responseThreeRandom = [
@@ -44,29 +50,156 @@ class SurveyFactory extends Factory
         $responseSixteenSeventeenRandom = [
             'Oui', 'Non'
         ];
+        $surveyResponseData = [];
 
-        return [
-            'responseOne' => $this->faker->email,
-            'responseTwo'=> rand(10,100),
-            'responseThree'=> $responseThreeRandom[$this->randomData($responseThreeRandom)],
-            'responseFour' => rand(0, 5),
-            'responseFive' => $this->faker->sentence(5),
-            'responseSix' => $responseSixRandom[$this->randomData($responseSixRandom)],
-            'responseSeven' => $responseSevenRandom[$this->randomData($responseSevenRandom)],
-            'responseEight' => $responseEightRandom[$this->randomData($responseEightRandom)],
-            'responseNine' => rand(0, 5),
-            'responseTen' => $responseTenRandom[$this->randomData($responseTenRandom)],
-            'responseEleven' => rand(0, 5),
-            'responseTwelve' => rand(0, 5),
-            'responseThirteen' => rand(0, 5),
-            'responseFourteen' => rand(0, 5),
-            'responseFifteen' => rand(0, 5),
-            'responseSixteen' => $responseSixteenSeventeenRandom[$this->randomData($responseSixteenSeventeenRandom)],
-            'responseSeventeen' => $responseSixteenSeventeenRandom[$this->randomData($responseSixteenSeventeenRandom)],
-            'responseEighteen' => rand(0, 5),
-            'responseNineteen' => rand(0, 5),
-            'responseTwenty'  => $this->faker->paragraph(),
-        ];
+        $j = 1;
+
+        // while($j<3){
+        //     $surveyResponseDataByUser = [];
+        //     for($i=0; $i<20; $i++){
+        //         switch($i){
+        //             case 0:
+        //                 continue;
+        //             case 1:
+        //                 array_push($surveyResponseDataByUser,
+        //                 [
+        //                 'question_id' => $i,
+        //                 'survey_user_id'=> $j,
+        //                 'response' => rand(10,100),
+        //                 ]);
+        //             case 2:
+        //                 array_push($surveyResponseDataByUser,
+        //                 [
+        //                 'question_id' => $i,
+        //                 'survey_user_id'=> $j,
+        //                 'response' => $responseThreeRandom[$this->randomData($responseThreeRandom)],
+        //                 ]);
+        //             case 3:
+        //                 array_push($surveyResponseDataByUser,
+        //                 [
+        //                 'question_id' => $i,
+        //                 'survey_user_id'=> $j,
+        //                 'response' => rand(0, 5),
+        //                 ]);
+        //             case 4:
+        //                 array_push($surveyResponseDataByUser,
+        //                 [
+        //                 'question_id' => $i,
+        //                 'survey_user_id'=> $j,
+        //                 'response' => $this->faker->sentence(5),
+        //                 ]);
+        //             case 5:
+        //                 array_push($surveyResponseDataByUser,
+        //                 [
+        //                 'question_id' => $i,
+        //                 'survey_user_id'=> $j,
+        //                 'response' => $responseSixRandom[$this->randomData($responseSixRandom)],
+        //                 ]);
+        //             case 6:
+        //                 array_push($surveyResponseDataByUser,
+        //                 [
+        //                 'question_id' => $i,
+        //                 'survey_user_id'=> $j,
+        //                 'response' => $responseSevenRandom[$this->randomData($responseSevenRandom)],
+        //                 ]);
+        //             case 7:
+        //                 array_push($surveyResponseDataByUser,
+        //                 [
+        //                 'question_id' => $i,
+        //                 'survey_user_id'=> $j,
+        //                 'response' => $responseEightRandom[$this->randomData($responseEightRandom)],
+        //                 ]);
+        //             case 8:
+        //                 array_push($surveyResponseDataByUser,
+        //                 [
+        //                 'question_id' => $i,
+        //                 'survey_user_id'=> $j,
+        //                 'response' => rand(0, 5),
+        //                 ]);
+        //             case 9:
+        //                 array_push($surveyResponseDataByUser,
+        //                 [
+        //                 'question_id' => $i,
+        //                 'survey_user_id'=> $j,
+        //                 'response' => $responseTenRandom[$this->randomData($responseTenRandom)],
+        //                 ]);
+        //             case 10:
+        //                 array_push($surveyResponseDataByUser,
+        //                 [
+        //                 'question_id' => $i,
+        //                 'survey_user_id'=> $j,
+        //                 'response' => rand(0, 5),
+        //                 ]);
+        //             case 11:
+        //                 array_push($surveyResponseDataByUser,
+        //                 [
+        //                 'question_id' => $i,
+        //                 'survey_user_id'=> $j,
+        //                 'response' => rand(0, 5),
+        //                 ]);
+        //             case 12:
+        //                 array_push($surveyResponseDataByUser,
+        //                 [
+        //                 'question_id' => $i,
+        //                 'survey_user_id'=> $j,
+        //                 'response' => rand(0, 5),
+        //                 ]);
+        //             case 13:
+        //                 array_push($surveyResponseDataByUser,
+        //                 [
+        //                 'question_id' => $i,
+        //                 'survey_user_id'=> $j,
+        //                 'response' => rand(0, 5),
+        //                 ]);
+        //             case 14:
+        //                 array_push($surveyResponseDataByUser,
+        //                 [
+        //                 'question_id' => $i,
+        //                 'survey_user_id'=> $j,
+        //                 'response' => rand(0, 5),
+        //                 ]);
+        //             case 15:
+        //                 array_push($surveyResponseDataByUser,
+        //                 [
+        //                 'question_id' => $i,
+        //                 'survey_user_id'=> $j,
+        //                 'response' => $responseSixteenSeventeenRandom[$this->randomData($responseSixteenSeventeenRandom)],
+        //                 ]);
+        //             case 16:
+        //                 array_push($surveyResponseDataByUser,
+        //                 [
+        //                 'question_id' => $i,
+        //                 'survey_user_id'=> $j,
+        //                 'response' => $responseSixteenSeventeenRandom[$this->randomData($responseSixteenSeventeenRandom)],
+        //                 ]);
+        //             case 17:
+        //                 array_push($surveyResponseDataByUser,
+        //                 [
+        //                 'question_id' => $i,
+        //                 'survey_user_id'=> $j,
+        //                 'response' => rand(0, 5),
+        //                 ]);
+        //             case 18:
+        //                 array_push($surveyResponseDataByUser,
+        //                 [
+        //                 'question_id' => $i,
+        //                 'survey_user_id'=> $j,
+        //                 'response' => rand(0, 5),
+        //                 ]);
+        //             case 19:
+        //                 array_push($surveyResponseDataByUser,
+        //                 [
+        //                 'question_id' => $i,
+        //                 'survey_user_id'=> $j,
+        //                 'response' => $this->faker->paragraph(),
+        //                 ]);
+
+        //         }
+        //     }
+        //     array_push($surveyResponseData,$surveyResponseDataByUser);
+        //     $j++;
+        // }
+    return $surveyResponseData;
     }
 
 
