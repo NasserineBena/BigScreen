@@ -51,6 +51,7 @@ class SurveySeeder extends Seeder
             for($i=1; $i<21; $i++){
                 switch($i){
                     case 1:
+                        Survey::create(['question_id' => $i, 'survey_user_id'=> $j,'response' => 'null']);
                         break;
                     case 2:
                         Survey::create(['question_id' => $i, 'survey_user_id'=> $j,'response' => rand(10,100)]);

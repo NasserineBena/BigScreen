@@ -34,8 +34,8 @@ class QuestionTypeSeeder extends Seeder
         QuestionType::create(['question'=>'Combien donnez-vous de point pour la qualité audio dans Bigscreen ?','type'=>'C']);
         QuestionType::create(['question'=>'Aimeriez vous avoir des notifications plus précises au cours de vos sessions Bigscreen ?', 'response_possibility'=>json_encode(['Oui','Non'], JSON_UNESCAPED_UNICODE),'type'=>'A']);
         QuestionType::create(['question'=>'Aimeriez vous pouvoir inviter un ami à rejoindre votre session via son smartphone ?','response_possibility'=>json_encode(['Oui','Non'], JSON_UNESCAPED_UNICODE),'type'=>'A']);
-        QuestionType::create(['question'=>'Aimeriez vous pouvoir enregistrer des émissions TV pour pouvoir les regarder ultérieurement ?','type'=>'C']);
-        QuestionType::create(['question'=>'Aimeriez-vous jouer à des jeux exclusifs sur votre Bigscreen ?','type'=>'C']);
+        QuestionType::create(['question'=>'Aimeriez vous pouvoir enregistrer des émissions TV pour pouvoir les regarder ultérieurement ?','response_possibility'=>json_encode(['Oui','Non'], JSON_UNESCAPED_UNICODE),'type'=>'A']);
+        QuestionType::create(['question'=>'Aimeriez-vous jouer à des jeux exclusifs sur votre Bigscreen ?','response_possibility'=>json_encode(['Oui','Non'], JSON_UNESCAPED_UNICODE),'type'=>'A']);
         QuestionType::create(['question'=>'Quelle nouvelle fonctionnalité devrait exister sur Bigscreen ?','type'=>'B']);
     }
 }
