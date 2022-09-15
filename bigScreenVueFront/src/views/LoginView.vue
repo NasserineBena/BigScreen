@@ -1,5 +1,7 @@
 <script>
 import axios from "axios";
+// import AddAndEditCurrency from "@/components/AddAndEditCurrency.vue";
+// import AddAndEditPair from "@/components/AddAndEditPair.vue";
 export default {
   data() {
     return {
@@ -7,8 +9,9 @@ export default {
       password: "",
     };
   },
+  emits: ["getStatusConnexion"],
   methods: {
-    connexion() {
+    login() {
       console.log(this.email, this.password);
       if (this.password == "" || this.email == "") {
         window.alert("Mot de passe et email ne sont pas vide!");
@@ -22,7 +25,8 @@ export default {
             if (data["message"] == "User login successfully.") {
               localStorage.setItem("access_token", data["data"]["token"]);
               localStorage.setItem("nameAdmin", data["data"]["name"]);
-              this.$router.push("/about");
+              this.$emit("getStatusConnexion");
+              this.$router.push("/admin");
             }
           })
           .catch((error) => {
@@ -37,8 +41,8 @@ export default {
 <template>
   <div class="body">
     <div>
-      <p class="title">bigscreen</p>
-      <form @submit.prevent="connexion">
+      <p class="titre">Connexion</p>
+      <form @submit.prevent="login">
         <div class="fields">
           <div class="four wide field">
             <label>E-mail</label><br />
@@ -75,15 +79,12 @@ template {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #d0e2f3;
-  width: 30%;
-  margin: 0 auto;
 }
 label {
-  color: white;
+  color: #0080ff;
 }
-.title {
-  color: white;
+.titre {
+  color: #0080ff;
   font-size: 30px;
   text-align: center;
   margin: 20px;

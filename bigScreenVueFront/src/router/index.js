@@ -7,7 +7,7 @@ const router = createRouter({
     {
       path: "/",
       redirect: {
-        name: "login",
+        name: "surveyQuestion",
       },
     },
     {
@@ -49,6 +49,16 @@ const router = createRouter({
           return { path: "/login" };
         }
       },
+    },
+    {
+      path: "/surveyQuestion",
+      name: "surveyQuestion",
+      component: () => import("../views/public/SurveyQuestionView.vue"),
+      // beforeEnter() {
+      //   if (localStorage.getItem("access_token") == null){
+      //         return { path: "/login"}
+      //   }
+      // },
     },
   ],
 });

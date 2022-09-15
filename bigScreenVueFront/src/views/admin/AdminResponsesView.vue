@@ -40,41 +40,33 @@ export default {
     getSurvey() {
       this.responseEmail = "";
       this.questionName = "";
-
-      //for (const user of this.userSurvey) {
-      for (const response of this.responseSurvey) {
-        //if (user.id === response.survey_user_id) {
-        //console.log(user.id + "=>" + response.survey_user_id);
-        let questionArray = JSON.parse(this.questionSurvey);
-        for (const question of questionArray) {
-          if (response.question_id === question.id) {
-            console.log(response.question_id + "=>" + question.id);
-            this.questionName = question.question;
-            if (response.question_id == 1) {
-              for (const user of this.userSurvey) {
-                if (user.id === response.survey_user_id) {
+      for (const user of this.userSurvey) {
+        for (const response of this.responseSurvey) {
+          if (user.id === response.survey_user_id) {
+            console.log(user.id + "=>" + response.survey_user_id);
+            let questionArray = JSON.parse(this.questionSurvey);
+            for (const question of questionArray) {
+              if (response.question_id === question.id) {
+                console.log(response.question_id + "=>" + question.id);
+                this.questionName = question.question;
+                if (response.question_id == 1) {
                   this.responseEmail = user.email;
                   this.allSurveys.push({
                     questionNumber: response.question_id,
                     questionName: this.questionName,
                     questionResponse: this.responseEmail,
                   });
-                  break;
+                } else {
+                  this.allSurveys.push({
+                    questionNumber: response.question_id,
+                    questionName: this.questionName,
+                    questionResponse: response.response,
+                  });
                 }
               }
-            } else {
-              this.allSurveys.push({
-                questionNumber: response.question_id,
-                questionName: this.questionName,
-                questionResponse: response.response,
-              });
             }
-            break;
           }
-          //}
         }
-        break;
-        //}
       }
       console.log(this.allSurveys.length);
       return this.allSurveys;
@@ -88,9 +80,22 @@ export default {
     <div class="col-3">
       <NavBar />
     </div>
-    <div class="col-9">Réponses</div>
-    <div>
-      {{ getSurvey() }}
+    <div class="col-9">
+      Réponses
+      <table id="customers">
+        <tr>
+          <th>Numéro</th>
+          <th>Question</th>
+          <th>Réponse</th>
+        </tr>
+        <tbody v-for="item in getSurvey()" v-bind:value="item.id">
+          <tr>
+            <td>{{ item.questionNumber }}</td>
+            <td>{{ item.questionName }}</td>
+            <td>{{ item.questionResponse }}</td>
+          </tr>
+        </tbody>
+      </table>
     </div>
   </div>
 </template>
