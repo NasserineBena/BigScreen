@@ -81,7 +81,6 @@ export default {
       <NavBar />
     </div>
     <div class="col-9">
-      Réponses
       <table id="customers">
         <tr>
           <th>Numéro</th>
@@ -108,9 +107,8 @@ export default {
 }
 .col-3 {
   width: 20%;
-  background-color: #d0e2f3;
+  background-color: #34495e;
   padding-top: 100px;
-  height: 84vh;
 }
 
 #customers {
@@ -137,7 +135,7 @@ export default {
   padding-top: 12px;
   padding-bottom: 12px;
   text-align: left;
-  background-color: #04aa6d;
+  background-color: #2c3e50;
   color: white;
 }
 </style>
