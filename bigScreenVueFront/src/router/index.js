@@ -1,34 +1,56 @@
-import { createRouter, createWebHistory } from 'vue-router'
+import { createRouter, createWebHistory } from "vue-router";
 import LoginView from "../views/LoginView.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {
-      path: '/',
+      path: "/",
       redirect: {
-          name: "login"
-      }
+        name: "login",
+      },
     },
     {
       path: "/login",
       name: "login",
       component: LoginView,
       beforeEnter() {
-        if (localStorage.getItem("access_token") != null){
-              return { path: "/admin/currencies"}
+        if (localStorage.getItem("access_token") != null) {
+          return { path: "/admin/accueil" };
         }
       },
     },
     {
-      path: '/about',
-      name: 'about',
-      // route level code-splitting
-      // this generates a separate chunk (About.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
-      component: () => import('../views/AboutView.vue')
-    }
-  ]
-})
+      path: "/admin/accueil",
+      name: "home",
+      component: () => import("../views/admin/AdminHomeView.vue"),
+      beforeEnter() {
+        if (localStorage.getItem("access_token") == null) {
+          return { path: "/login" };
+        }
+      },
+    },
+    {
+      path: "/admin/questionnaire",
+      name: "question",
+      component: () => import("../views/admin/AdminQuestionView.vue"),
+      beforeEnter() {
+        if (localStorage.getItem("access_token") == null) {
+          return { path: "/login" };
+        }
+      },
+    },
+    {
+      path: "/admin/reponses",
+      name: "responses",
+      component: () => import("../views/admin/AdminResponsesView.vue"),
+      beforeEnter() {
+        if (localStorage.getItem("access_token") == null) {
+          return { path: "/login" };
+        }
+      },
+    },
+  ],
+});
 
-export default router
+export default router;
