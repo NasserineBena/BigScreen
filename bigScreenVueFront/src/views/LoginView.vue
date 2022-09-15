@@ -10,8 +10,9 @@ export default {
             password:"",
         };
     },
+    emits: ["getStatusConnexion"],
     methods: {
-        connexion(){
+        login(){
             console.log(this.email, this.password);
             if(this.password=="" || this.email==""){
                 window.alert("Mot de passe et email ne sont pas vide!")
@@ -25,7 +26,8 @@ export default {
                     if (data["message"] == "User login successfully."){
                         localStorage.setItem("access_token", data["data"]["token"]);
                         localStorage.setItem("nameAdmin", data["data"]["name"]);
-                        this.$router.push("/about");
+                        this.$emit("getStatusConnexion");
+                        this.$router.push("/admin");
                     };
                 })
                 .catch((error) => {
@@ -42,7 +44,7 @@ export default {
     <div class="body">
         <div>
             <p class="titre">Connexion</p>
-            <form @submit.prevent="connexion">
+            <form @submit.prevent="login">
                 <div class="fields">
                     <div class="four wide field">
                         <label>E-mail</label><br>

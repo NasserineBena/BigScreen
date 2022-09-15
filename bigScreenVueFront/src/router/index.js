@@ -7,7 +7,7 @@ const router = createRouter({
     {
       path: '/',
       redirect: {
-          name: "login"
+          name: "surveyQuestion"
       }
     },
     {
@@ -16,18 +16,20 @@ const router = createRouter({
       component: LoginView,
       beforeEnter() {
         if (localStorage.getItem("access_token") != null){
-              return { path: "/admin/currencies"}
+              return { path: "/surveyQuestion"}
         }
       },
     },
     {
-      path: '/about',
-      name: 'about',
-      // route level code-splitting
-      // this generates a separate chunk (About.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
-      component: () => import('../views/AboutView.vue')
-    }
+      path: "/surveyQuestion",
+      name: "surveyQuestion",
+      component: () => import("../views/public/SurveyQuestionView.vue"),
+      // beforeEnter() {
+      //   if (localStorage.getItem("access_token") == null){
+      //         return { path: "/login"}
+      //   }
+      // },
+    },
   ]
 })
 
