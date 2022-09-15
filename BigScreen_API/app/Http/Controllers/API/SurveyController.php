@@ -15,12 +15,12 @@ class SurveyController extends Controller
      */
     public function index()
     {
-        //$allResponses = Survey::all();
+        $allResponses = Survey::all();
 
         // On retourne les informations des utilisateurs en JSON
-        //return response()->json($allResponses);
-        $allResponses = Survey::where('responseOne','howard76@hotmail.com')->firstOrFail();
-        return $allResponses;
+        return response()->json($allResponses, JSON_UNESCAPED_UNICODE);
+        //$allResponses = Survey::where('responseOne','howard76@hotmail.com')->firstOrFail();
+        //return $allResponses;
 
     }
 
