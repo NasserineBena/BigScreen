@@ -20,7 +20,7 @@ class QuestionTypeController extends Controller
         $allQuestions = QuestionType::all();
         foreach($allQuestions as $question){
             if($question->type === "A"){
-                $question->response_possibility = json_decode($question->response_possibility);
+                $question->response_possibility = json_decode($question->response_possibility, JSON_UNESCAPED_UNICODE);
             }
 
         }
