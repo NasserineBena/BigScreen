@@ -18,7 +18,7 @@ class SurveyUserFactory extends Factory
     {
         return [
             'email'=>$this->faker->email,
-            'token'=>$this->faker->sentence(3)
+            'token'=>$this->faker->regexify('[A-Za-z0-9]{20}')
         ];
     }
 }

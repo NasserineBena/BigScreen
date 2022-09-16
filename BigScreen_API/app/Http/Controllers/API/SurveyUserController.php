@@ -1,13 +1,12 @@
 <?php
 
 namespace App\Http\Controllers\API;
-
+use Faker\Generator;
 use App\Http\Controllers\Controller;
-use App\Models\QuestionType;
+use App\Models\SurveyUser;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
 
-class QuestionTypeController extends Controller
+class SurveyUserController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,18 +15,9 @@ class QuestionTypeController extends Controller
      */
     public function index()
     {
-        $allQuestions = new QuestionType;
-        $allQuestions = QuestionType::all();
-        foreach($allQuestions as $question){
-            if($question->type === "A"){
-                $question->response_possibility = json_decode($question->response_possibility);
-            }
-
-        }
-        // On retourne les informations des utilisateurs en JSON
-        return $allQuestions;
+        $surveyUser= SurveyUser::all();
+        return $surveyUser;
     }
-
 
     /**
      * Store a newly created resource in storage.
@@ -36,17 +26,22 @@ class QuestionTypeController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
-        //
+    {   
+        $faker= app(Generator::class);
+        $surveyUser = new SurveyUser;
+        $surveyUser->email = $request->email;
+        $surveyUser->token= $faker->regexify('[A-Za-z0-9]{20}');
+        $surveyUser->save();
+        return response()->json($request);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\QuestionType  $questionType
+     * @param  \App\Models\SurveyUser  $surveyUser
      * @return \Illuminate\Http\Response
      */
-    public function show(QuestionType $questionType)
+    public function show(SurveyUser $surveyUser)
     {
         //
     }
@@ -55,10 +50,10 @@ class QuestionTypeController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\QuestionType  $questionType
+     * @param  \App\Models\SurveyUser  $surveyUser
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, QuestionType $questionType)
+    public function update(Request $request, SurveyUser $surveyUser)
     {
         //
     }
@@ -66,10 +61,10 @@ class QuestionTypeController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\QuestionType  $questionType
+     * @param  \App\Models\SurveyUser  $surveyUser
      * @return \Illuminate\Http\Response
      */
-    public function destroy(QuestionType $questionType)
+    public function destroy(SurveyUser $surveyUser)
     {
         //
     }
