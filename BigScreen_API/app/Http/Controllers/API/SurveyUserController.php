@@ -1,13 +1,11 @@
 <?php
 
 namespace App\Http\Controllers\API;
-<<<<<<< HEAD
 use Faker\Generator;
-=======
 
->>>>>>> d127543262757a87089419729149f8cad2cbf782
 use App\Http\Controllers\Controller;
 use App\Models\SurveyUser;
+
 use Illuminate\Http\Request;
 
 class SurveyUserController extends Controller
@@ -19,13 +17,8 @@ class SurveyUserController extends Controller
      */
     public function index()
     {
-<<<<<<< HEAD
-        $surveyUser= SurveyUser::all();
-        return $surveyUser;
-=======
         $allSurveyUser = SurveyUser::All();
         return response()->json($allSurveyUser);
->>>>>>> d127543262757a87089419729149f8cad2cbf782
     }
 
     /**
@@ -35,7 +28,6 @@ class SurveyUserController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-<<<<<<< HEAD
     {   
         $faker= app(Generator::class);
         $surveyUser = new SurveyUser;
@@ -43,10 +35,6 @@ class SurveyUserController extends Controller
         $surveyUser->token= $faker->regexify('[A-Za-z0-9]{20}');
         $surveyUser->save();
         return response()->json($request);
-=======
-    {
-        //
->>>>>>> d127543262757a87089419729149f8cad2cbf782
     }
 
     /**
