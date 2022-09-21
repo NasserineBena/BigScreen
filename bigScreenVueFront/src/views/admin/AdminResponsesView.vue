@@ -12,7 +12,7 @@ export default {
       questionSurvey: [],
       urlResponseSurvey: "http://127.0.0.1:8000/api/survey",
       responseSurvey: [],
-      urlUserSurvey: "http://127.0.0.1:8000/api/survey_user",
+      urlUserSurvey: "http://127.0.0.1:8000/api/surveyUser",
       userSurvey: [],
       responseEmail: "",
       questionName: "",

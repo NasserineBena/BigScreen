@@ -34,7 +34,7 @@ class SurveyUserController extends Controller
         $surveyUser->email = $request->email;
         $surveyUser->token= $faker->regexify('[A-Za-z0-9]{20}');
         $surveyUser->save();
-        return response()->json($request);
+        return response()->json($surveyUser->id);
     }
 
     /**

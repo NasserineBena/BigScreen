@@ -2,6 +2,7 @@
 import axios from "axios";
 import { RouterLink, RouterView } from "vue-router";
 import { useRouter } from "vue-router";
+
 export default {
   data() {
     return {
@@ -12,6 +13,9 @@ export default {
     currentRouteName() {
       return this.$route.name;
     },
+  },
+  mounted() {
+    console.log(import.meta.env.VITE_URL_API)
   },
   methods: {
     logout() {

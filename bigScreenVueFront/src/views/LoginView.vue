@@ -26,7 +26,7 @@ export default {
               localStorage.setItem("access_token", data["data"]["token"]);
               localStorage.setItem("nameAdmin", data["data"]["name"]);
               this.$emit("getStatusConnexion");
-              this.$router.push("/admin");
+              this.$router.push("/admin/accueil");
             }
           })
           .catch((error) => {

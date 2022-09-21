@@ -29,19 +29,29 @@ export default {
             return true;
         },
         valider(){
-            axios
+            if(this.checkValide()== true){
+                axios
                 .post("http://127.0.0.1:8000/api/surveyUser", {
                 email: this.surveyResponse[1],
                 })
                 .then((data) => {
-                    console.log(data);
+                    const id_user= data;
+                    console.log(id_user);
+                    for(const element of this.surveyQuestions ) {
+                        axios
+                        .post("http://127.0.0.1:8000/api/survey", {
+                        question_id: element.id,
+                        survey_user_id : id_user,
+                        response: this.surveyResponse[element.id],
+                        })
+
+                    }
                 })
                 .catch((e) => {
                     alert(e);
                 });
-            // if(this.checkValide()== true){
 
-            // }
+            }
         }
     },
     
