@@ -15,8 +15,8 @@ export default {
   created() {
     axios.get(this.urlQuestionSurvey).then((data) => {
       console.log(data);
-      this.questionSurvey = data["data"].substr(5);
-      console.log(JSON.parse(this.questionSurvey)[0]);
+      this.questionSurvey = data["data"];
+      console.log(this.questionSurvey);
     });
   },
 };
@@ -34,10 +34,7 @@ export default {
           <th>Question</th>
           <th>Type</th>
         </tr>
-        <tbody
-          v-for="item in JSON.parse(questionSurvey)"
-          v-bind:value="item.id"
-        >
+        <tbody v-for="item in questionSurvey" v-bind:value="item.id">
           <tr>
             <td>{{ item.id }}</td>
             <td>{{ item.question }}</td>

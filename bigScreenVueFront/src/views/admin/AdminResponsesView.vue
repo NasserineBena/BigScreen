@@ -14,16 +14,14 @@ export default {
       responseSurvey: [],
       urlUserSurvey: "http://127.0.0.1:8000/api/surveyUser",
       userSurvey: [],
-      responseEmail: "",
-      questionName: "",
       allSurveys: [],
     };
   },
   mounted() {
     axios.get(this.urlQuestionSurvey).then((data) => {
       console.log(data);
-      this.questionSurvey = data["data"].substr(5);
-      console.log(JSON.parse(this.questionSurvey)[0]);
+      this.questionSurvey = data["data"];
+      console.log(this.questionSurvey);
     });
     axios.get(this.urlResponseSurvey).then((data) => {
       console.log(data);
@@ -38,28 +36,24 @@ export default {
   },
   methods: {
     getSurvey() {
-      this.responseEmail = "";
-      this.questionName = "";
-      for (const user of this.userSurvey) {
-        for (const response of this.responseSurvey) {
-          if (user.id === response.survey_user_id) {
-            console.log(user.id + "=>" + response.survey_user_id);
-            let questionArray = JSON.parse(this.questionSurvey);
-            for (const question of questionArray) {
-              if (response.question_id === question.id) {
-                console.log(response.question_id + "=>" + question.id);
-                this.questionName = question.question;
+      this.allSurveys = [];
+      for (const response of this.responseSurvey) {
+        const response_id_user = response.survey_user_id;
+        const response_id_question = response.question_id;
+        for (const user of this.userSurvey) {
+          if (response_id_user === user.id) {
+            for (const question of this.questionSurvey) {
+              if (question.id == response_id_question) {
                 if (response.question_id == 1) {
-                  this.responseEmail = user.email;
                   this.allSurveys.push({
                     questionNumber: response.question_id,
-                    questionName: this.questionName,
-                    questionResponse: this.responseEmail,
+                    questionName: question.question,
+                    questionResponse: user.email,
                   });
-                } else {
+                } else if (response.question_id > 1) {
                   this.allSurveys.push({
                     questionNumber: response.question_id,
-                    questionName: this.questionName,
+                    questionName: question.question,
                     questionResponse: response.response,
                   });
                 }
@@ -68,7 +62,7 @@ export default {
           }
         }
       }
-      console.log(this.allSurveys.length);
+
       return this.allSurveys;
     },
   },
@@ -135,7 +129,7 @@ export default {
   padding-top: 12px;
   padding-bottom: 12px;
   text-align: left;
-  background-color: #2c3e50;
+  background-color: #34495e;
   color: white;
 }
 </style>
