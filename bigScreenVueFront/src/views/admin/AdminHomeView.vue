@@ -64,9 +64,7 @@ export default {
       },
     };
   },
-  methods: {
-    getPieChartQuestion6,
-  },
+  methods: {},
 };
 </script>
 
