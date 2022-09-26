@@ -20,8 +20,8 @@ export default {
   mounted() {
     axios.get(this.urlQuestionSurvey).then((data) => {
       console.log(data);
-      this.questionSurvey = data["data"].substr(5);
-      console.log(JSON.parse(this.questionSurvey)[0]);
+      this.questionSurvey = data["data"];
+      console.log(this.questionSurvey);
     });
     axios.get(this.urlResponseSurvey).then((data) => {
       console.log(data);
@@ -42,7 +42,7 @@ export default {
         const response_id_question = response.question_id;
         for (const user of this.userSurvey) {
           if (response_id_user === user.id) {
-            for (const question of JSON.parse(this.questionSurvey)) {
+            for (const question of this.questionSurvey) {
               if (question.id == response_id_question) {
                 if (response.question_id == 1) {
                   this.allSurveys.push({
