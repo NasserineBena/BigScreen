@@ -44,7 +44,7 @@ export default {
       this.$router.push("/login");
     },
     getStatusConnexion() {
-      console.log(localStorage.getItem("access_token"));
+      // console.log(localStorage.getItem("access_token"));
       if (localStorage.getItem("access_token") !== null) {
         this.connexion = true;
       } else {
