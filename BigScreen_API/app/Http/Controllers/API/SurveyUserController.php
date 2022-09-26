@@ -1,9 +1,11 @@
 <?php
 
 namespace App\Http\Controllers\API;
+use Faker\Generator;
 
 use App\Http\Controllers\Controller;
 use App\Models\SurveyUser;
+
 use Illuminate\Http\Request;
 
 class SurveyUserController extends Controller
@@ -26,8 +28,13 @@ class SurveyUserController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
-        //
+    {   
+        $faker= app(Generator::class);
+        $surveyUser = new SurveyUser;
+        $surveyUser->email = $request->email;
+        $surveyUser->token= $faker->regexify('[A-Za-z0-9]{20}');
+        $surveyUser->save();
+        return response()->json($surveyUser->id);
     }
 
     /**

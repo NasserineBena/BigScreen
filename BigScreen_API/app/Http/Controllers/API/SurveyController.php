@@ -43,27 +43,9 @@ class SurveyController extends Controller
     public function store(Request $request)
     {
         $survey = new Survey;
-        $survey->responseOne = $request->responseOne;
-        $survey->responseTwo = $request->responseTwo;
-        $survey->responseThree = $request->responseThree;
-        $survey->responseFour = $request->responseFour;
-        $survey->responseFive = $request->responseFive;
-        $survey->responseSix = $request->responseSix;
-        $survey->responseSeven = $request->responseSeven;
-        $survey->responseEight = $request->responseEight;
-        $survey->responseNine = $request->responseNine;
-        $survey->responseTen = $request->responseTen;
-        $survey->responseEleven = $request->responseEleven;
-        $survey->responseTwelve = $request->responseTwelve;
-        $survey->responseThirteen = $request->responseThirteen;
-        $survey->responseFourteen = $request->responseFourteen;
-        $survey->responseFifteen = $request->responseFifteen;
-        $survey->responseSixteen = $request->responseSixteen;
-        $survey->responseSeventeen = $request->responseSeenteen;
-        $survey->responseEighteen = $request->responseEighteen;
-        $survey->responseNineteen = $request->responseNineteen;
-        $survey->responseTwenty = $request->responseTwenty;
-
+        $survey->question_id = $request->question_id;
+        $survey->survey_user_id  = $request->survey_user_id ;
+        $survey->response = $request->response;
         $survey->save();
         return response()->json($request);
     }

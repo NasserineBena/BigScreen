@@ -3,9 +3,10 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\API\QuestionTypeController;
+use App\Http\Controllers\API\SurveyUserController;
+
 use App\Http\Controllers\API\SurveyController;
 use App\Http\Controllers\API\UserController;
-use App\Http\Controllers\API\SurveyUserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,7 +24,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 Route::apiResource("question", QuestionTypeController::class)->except(['create','edit','delete']);
 Route::apiResource("survey", SurveyController::class)->except(['create','edit','delete']);
-Route::apiResource("survey_user", SurveyUserController::class)->except(['create','edit','delete']);
+Route::apiResource("surveyUser", SurveyUserController::class)->except(['create','edit','delete']);
 
 Route::middleware('auth:sanctum')->group(function (){
     Route::get('/user', function (Request $request) {
