@@ -7,6 +7,7 @@ export default {
     return {
       email: "",
       password: "",
+      urlApi:import.meta.env.VITE_URL_API,
     };
   },
   emits: ["getStatusConnexion"],
@@ -17,7 +18,7 @@ export default {
         window.alert("Mot de passe et email ne sont pas vide!");
       } else {
         axios
-          .post("http://127.0.0.1:8000/api/login", {
+          .post(this.urlApi+"login", {
             email: this.email,
             password: this.password,
           })
