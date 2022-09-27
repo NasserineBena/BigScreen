@@ -56,9 +56,12 @@ class SurveyController extends Controller
      * @param  \App\Models\Survey  $survey
      * @return \Illuminate\Http\Response
      */
-    public function show(Survey $survey)
+    public function show($id)
+
     {
-        //
+        $survey = Survey::where('survey_user_id','=', $id)->get();
+        return response()->json($survey);
+
     }
 
     /**

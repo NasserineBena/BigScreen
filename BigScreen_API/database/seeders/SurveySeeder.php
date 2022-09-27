@@ -4,6 +4,8 @@ namespace Database\Seeders;
 use Illuminate\Support\Arr;
 use Faker\Generator;
 use App\Models\Survey;
+use App\Models\SurveyUser;
+
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Faker\Factory as Faker;
@@ -51,7 +53,8 @@ class SurveySeeder extends Seeder
             for($i=1; $i<21; $i++){
                 switch($i){
                     case 1:
-                        Survey::create(['question_id' => $i, 'survey_user_id'=> $j,'response' => 'null']);
+                        $email = SurveyUser::findOrFail($j)["email"];
+                        Survey::create(['question_id' => $i, 'survey_user_id'=> $j,'response' => $email]);
                         break;
                     case 2:
                         Survey::create(['question_id' => $i, 'survey_user_id'=> $j,'response' => rand(10,100)]);

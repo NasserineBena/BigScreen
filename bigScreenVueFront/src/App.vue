@@ -7,6 +7,7 @@ export default {
   data() {
     return {
       connexion: false,
+      urlApi: import.meta.env.VITE_URL_API,
     };
   },
   computed: {
@@ -14,14 +15,11 @@ export default {
       return this.$route.name;
     },
   },
-  mounted() {
-    console.log(import.meta.env.VITE_URL_API)
-  },
   methods: {
     logout() {
       let token = localStorage.getItem("access_token");
       axios
-        .post("http://127.0.0.1:8000/api/logout", null, {
+        .post(this.urlApi+"logout", null, {
           headers: {
             "Content-Type": "application/json",
             Authorization: "Bearer " + token,
@@ -34,12 +32,12 @@ export default {
           localStorage.removeItem("access_token");
         })
         .catch((error) => {
-          window.alert("Vous ne pouvez pas se déconnacter ");
+          window.alert("Vous ne pouvez pas se déconnecter ");
         });
     },
     login() {
       if (this.connexion != null) {
-        this.$router.push("/admin");
+        this.$router.push("/admin/accueil");
       }
       this.$router.push("/login");
     },
