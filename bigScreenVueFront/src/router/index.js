@@ -22,7 +22,7 @@ const router = createRouter({
     },
     {
       path: "/admin/accueil",
-      name: "home",
+      name: "stat",
       component: () => import("../views/admin/AdminHomeView.vue"),
       beforeEnter() {
         if (localStorage.getItem("access_token") == null) {
