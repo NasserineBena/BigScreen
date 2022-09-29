@@ -43,7 +43,6 @@ export default {
       countStat7Array: [],
       countStat10Array: [],
 
-      series: [1, 1, 1],
       chartOptions: {
         chart: {
           type: "donut",
@@ -130,11 +129,64 @@ export default {
       });
       console.log(this.countStat6Array);
 
+      let chartOptionsQuestion6 = {
+        labels: this.responsePossibility6Array,
+        responsive: [
+          {
+            breakpoint: 770,
+            options: {
+              chart: {
+                width: 500,
+              },
+              legend: {
+                position: "bottom",
+              },
+            },
+          },
+        ],
+      };
+
+      let chartOptionsQuestion7 = {
+        labels: this.responsePossibility7Array,
+        responsive: [
+          {
+            breakpoint: 770,
+            options: {
+              chart: {
+                width: 500,
+              },
+              legend: {
+                position: "bottom",
+              },
+            },
+          },
+        ],
+      };
+
+      let chartOptionsQuestion10 = {
+        labels: this.responsePossibility10Array,
+        responsive: [
+          {
+            breakpoint: 770,
+            options: {
+              chart: {
+                width: 500,
+              },
+              legend: {
+                position: "bottom",
+              },
+            },
+          },
+        ],
+      };
+
       return [
-        this.responsePossibility6Array,
-        this.responsePossibility7Array,
-        this.responsePossibility10Array,
         this.countStat6Array,
+        this.countStat7Array,
+        this.countStat10Array,
+        chartOptionsQuestion6,
+        chartOptionsQuestion7,
+        chartOptionsQuestion10,
       ];
     },
   },
@@ -148,14 +200,33 @@ export default {
     </div>
 
     <div>
+      Statistiques de la question 6
       <apexchart
         type="donut"
-        :options="chartOptions"
-        :series="getResponse6710[3]"
+        :options="getResponse6710[3]"
+        :series="getResponse6710[0]"
         :height="200"
+        :width="550"
       ></apexchart>
 
-      {{ this.getResponse6710[3] }}
+      Statistiques de la question 7
+      <apexchart
+        type="donut"
+        :options="getResponse6710[4]"
+        :series="getResponse6710[1]"
+        :height="200"
+        :width="500"
+      ></apexchart>
+
+      Statistiques de la question 10
+
+      <apexchart
+        type="donut"
+        :options="getResponse6710[5]"
+        :series="getResponse6710[2]"
+        :height="200"
+        :width="550"
+      ></apexchart>
     </div>
   </div>
 </template>
