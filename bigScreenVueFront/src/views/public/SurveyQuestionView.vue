@@ -1,6 +1,7 @@
 <script>
 import axios from "axios";
 import { RouterLink, RouterView } from "vue-router";
+import Message from "../../components/public/Message.vue";
 
 export default {
     data() {
@@ -9,8 +10,11 @@ export default {
             surveyQuestions:[],
             surveyResponse: {},
             urlAPi: import.meta.env.VITE_URL_API,
+            message: false,
+            token:"WkWnsmkd2gwBDiLXv5rP",
         };
     },
+    components: { Message },
     methods: {
         getSurveyQuestions() {
             axios.get(this.urlAPi+'question').then((data) => {
@@ -48,7 +52,9 @@ export default {
                         response: this.surveyResponse[element.id],
                         })
                     }
-                    this.$router.push("surveyResponse/"+token_user);
+                    this.message= true;
+                    this.token = token_user
+                    // this.$router.push("surveyResponse/"+token_user);
 
                 })
                 .catch((e) => {
@@ -56,6 +62,10 @@ export default {
                 });
 
             }
+        },
+        closeMessage(){
+            this.message= false;
+            this.$router.go(this.$router.currentRoute);
         }
     },
     
@@ -65,7 +75,7 @@ export default {
 };
 </script>
 <template >
-    <div class="body">
+    <div class="body" v-if="message==false">
         <div>
             <div v-for="question in surveyQuestions" v-bind:value="question.id">
                 <p class="titleQuestion">{{question.question}}</p>
@@ -92,7 +102,15 @@ export default {
             </div>
         </div>
     </div>
+    <div class="popup" v-if="message==true">
+        <div >
+            <Message
+            :token="token"
+            @closeMessage="closeMessage"/>
+        </div>
+    </div>
 </template>
+
 <style scoped>
 
 .checkbox{
@@ -102,6 +120,7 @@ export default {
     display:flex;
 }
 .body{
+    
     display:flex;
     justify-content: center;
     margin-top: 45px;
@@ -116,5 +135,16 @@ textarea{
     margin-top: 20px;
     font-size: 20px;
     font-weight:bold;
+}
+.popup{
+    width: 85%;
+    background-color: white;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin: auto;
+    transform: translate(-50%,-50%);
+    white-space:wrap;
+    text-overflow: "-";
 }
 </style>

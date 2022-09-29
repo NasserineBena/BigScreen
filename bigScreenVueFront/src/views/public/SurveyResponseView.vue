@@ -9,6 +9,7 @@ export default {
             urlAPi: import.meta.env.VITE_URL_API,
             surveyQuestions: [],
             surveyResponse:[],
+           
 
         };
     },
