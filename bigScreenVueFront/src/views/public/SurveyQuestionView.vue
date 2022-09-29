@@ -114,10 +114,6 @@ export default {
         <button v-on:click.prevent="validate">Valider</button>
       </div>
     </div>
-
-    <div>
-      <button v-on:click.prevent="valider">Valider</button>
-    </div>
   </div>
 </template>
 <style scoped>

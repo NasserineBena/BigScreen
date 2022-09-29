@@ -43,7 +43,7 @@ export default {
       countStat7Array: [],
       countStat10Array: [],
 
-      series: [],
+      series: [1, 1, 1],
       chartOptions: {
         chart: {
           type: "donut",
@@ -77,7 +77,7 @@ export default {
     });
   },
 
-  methods: {
+  computed: {
     getResponse6710() {
       this.response6Array = [];
       this.response7Array = [];
@@ -106,13 +106,11 @@ export default {
           }
         }
       }
-      this.countStat6Array = [];
+      this.countStat10Array = [];
       this.responsePossibility6Array.forEach((responses6) => {
         this.countStat6 = 0;
         this.response6Array.forEach((element6) => {
-          if (element6 == responses6) {
-            this.countStat6++;
-          }
+          if (element6 == responses6) this.countStat6++;
         });
         this.countStat6Array.push(this.countStat6);
       });
@@ -153,10 +151,11 @@ export default {
       <apexchart
         type="donut"
         :options="chartOptions"
-        :series="getResponse6710()[3]"
+        :series="getResponse6710[3]"
+        :height="200"
       ></apexchart>
 
-      {{ getResponse6710()[3] }}
+      {{ this.getResponse6710[3] }}
     </div>
   </div>
 </template>
