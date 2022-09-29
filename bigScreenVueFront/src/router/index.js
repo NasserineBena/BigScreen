@@ -31,11 +31,6 @@ const router = createRouter({
       },
     },
     {
-      path: "/surveyResponse/:token",
-      name: "home",
-      component: () => import("../views/public/SurveyResponseView.vue"),
-    },
-    {
       path: "/admin/questionnaire",
       name: "question",
       component: () => import("../views/admin/AdminQuestionView.vue"),
@@ -64,6 +59,11 @@ const router = createRouter({
       //         return { path: "/login"}
       //   }
       // },
+    },
+    { 
+      path: '/surveyResponse/:id', 
+      name: ":id",
+      component: () => import("../views/public/SurveyResponseView.vue"),  
     },
   ],
 });

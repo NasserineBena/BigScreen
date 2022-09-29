@@ -28,13 +28,13 @@ class SurveyUserController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {   
+    {
         $faker= app(Generator::class);
         $surveyUser = new SurveyUser;
         $surveyUser->email = $request->email;
         $surveyUser->token= $faker->regexify('[A-Za-z0-9]{20}');
         $surveyUser->save();
-        return response()->json($surveyUser->id);
+        return response()->json($surveyUser);
     }
 
     /**
@@ -43,9 +43,11 @@ class SurveyUserController extends Controller
      * @param  \App\Models\SurveyUser  $surveyUser
      * @return \Illuminate\Http\Response
      */
-    public function show(SurveyUser $surveyUser)
+    public function show($token)
     {
-        //
+        $userSurvey = SurveyUser::where('token','=',$token) -> first();
+        return response()->json($userSurvey);
+
     }
 
     /**

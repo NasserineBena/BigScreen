@@ -1,5 +1,6 @@
 <script>
 import axios from "axios";
+import { RouterLink, RouterView } from "vue-router";
 
 export default {
   data() {
@@ -7,18 +8,19 @@ export default {
       responseTypeC: ["1", "2", "3", "4", "5"],
       surveyQuestions: [],
       surveyResponse: {},
+      urlAPi: import.meta.env.VITE_URL_API,
     };
   },
   methods: {
     getSurveyQuestions() {
-      axios.get("http://127.0.0.1:8000/api/question").then((data) => {
+      axios.get(this.urlAPi + "question").then((data) => {
         this.surveyQuestions = data["data"];
         this.surveyQuestions.forEach((element) => {
           this.surveyResponse[element.id] = "";
         });
       });
     },
-    checkValide() {
+    checkValidate() {
       for (const element of this.surveyQuestions) {
         if (this.surveyResponse[element.id] == "") {
           window.alert("Il faut répondre tous les questions");
@@ -27,6 +29,32 @@ export default {
       }
       return true;
     },
+    validate() {
+      if (this.checkValidate() == true) {
+        axios
+          .post(this.urlAPi + "surveyUser", {
+            email: this.surveyResponse[1],
+          })
+          .then((data) => {
+            const id_user = data.data.id;
+            const token_user = data.data.token;
+            console.log(data);
+            for (const element of this.surveyQuestions) {
+              axios.post(this.urlAPi + "survey", {
+                question_id: element.id,
+                survey_user_id: id_user,
+                response: this.surveyResponse[element.id],
+              });
+            }
+            this.$router.push("surveyResponse/" + token_user);
+          })
+          .catch((e) => {
+            alert(e);
+          });
+      }
+      return true;
+    },
+
     valider() {
       if (this.checkValide() == true) {
         axios
@@ -50,7 +78,6 @@ export default {
       }
     },
   },
-
   created() {
     this.getSurveyQuestions();
   },
@@ -84,8 +111,12 @@ export default {
         </div>
       </div>
       <div>
-        <button v-on:click.prevent="valider">Valider</button>
+        <button v-on:click.prevent="validate">Valider</button>
       </div>
+    </div>
+
+    <div>
+      <button v-on:click.prevent="valider">Valider</button>
     </div>
   </div>
 </template>
