@@ -157,6 +157,9 @@ export default {
       });
 
       let chartOptionsQuestion6 = {
+        title: {
+          text: "Statistiques sur la questions 6",
+        },
         labels: this.responsePossibility6Array,
         responsive: [
           {
@@ -174,6 +177,9 @@ export default {
       };
 
       let chartOptionsQuestion7 = {
+        title: {
+          text: "Statistiques sur la questions 7",
+        },
         labels: this.responsePossibility7Array,
         responsive: [
           {
@@ -191,6 +197,9 @@ export default {
       };
 
       let chartOptionsQuestion10 = {
+        title: {
+          text: "Statistiques sur la questions 10",
+        },
         labels: this.responsePossibility10Array,
         responsive: [
           {
@@ -314,7 +323,7 @@ export default {
           type: "radar",
         },
         title: {
-          text: "Basic Radar Chart",
+          text: "Statistiques sur les questions 11, 12, 13, 14, 15",
         },
         xaxis: {
           categories: [1, 2, 3, 4, 5],
@@ -334,7 +343,6 @@ export default {
     </div>
 
     <div>
-      Statistiques de la question 6
       <apexchart
         type="donut"
         :options="getResponse6710[3]"
@@ -343,7 +351,6 @@ export default {
         :width="550"
       ></apexchart>
 
-      Statistiques de la question 7
       <apexchart
         type="donut"
         :options="getResponse6710[4]"
@@ -351,8 +358,6 @@ export default {
         :height="200"
         :width="500"
       ></apexchart>
-
-      Statistiques de la question 10
 
       <apexchart
         type="donut"
@@ -362,24 +367,9 @@ export default {
         :width="550"
       ></apexchart>
 
-      Statistiques radar
       <br />
 
-      {{ getResultsQuality }}
-
-      <!-- <apexchart
-        type="radar"
-        :options="getResultsQuality"
-        :height="200"
-        :width="550"
-      ></apexchart>
-
-      <apexchart
-        type="radar"
-        height="350"
-        :options="getResultsQuality"
-        :series="getResultsQuality.series"
-      ></apexchart> -->
+      <!-- {{ getResultsQuality }} -->
 
       <apexchart
         type="radar"
