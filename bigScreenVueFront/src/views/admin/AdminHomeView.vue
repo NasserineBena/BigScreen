@@ -1,70 +1,145 @@
 <script>
 import NavBar from "../../components/admin/NavBar.vue";
-import { Bar } from "vue-chartjs";
-import {
-  Chart as ChartJS,
-  Title,
-  Tooltip,
-  Legend,
-  BarElement,
-  CategoryScale,
-  LinearScale,
-} from "chart.js";
+import { createApp } from "vue";
+import App from "../../App.vue";
+import ApexCharts from "apexcharts";
+import axios from "axios";
 
-ChartJS.register(
-  Title,
-  Tooltip,
-  Legend,
-  BarElement,
-  CategoryScale,
-  LinearScale
-);
+import VueApexCharts from "vue3-apexcharts";
+
+const app = createApp(App);
+
+app.config.globalProperties.$apexcharts = ApexCharts;
+
+app.use(VueApexCharts);
+app.component("VueApexCharts", VueApexCharts);
 
 export default {
-  name: "BarChart",
-  components: { Bar, NavBar },
-  props: {
-    chartId: {
-      type: String,
-      default: "bar-chart",
-    },
-    datasetIdKey: {
-      type: String,
-      default: "label",
-    },
-    width: {
-      type: Number,
-      default: 400,
-    },
-    height: {
-      type: Number,
-      default: 400,
-    },
-    cssClasses: {
-      default: "",
-      type: String,
-    },
-    styles: {
-      type: Object,
-      default: () => {},
-    },
-    plugins: {
-      type: Object,
-      default: () => {},
-    },
+  components: {
+    NavBar,
+    apexchart: VueApexCharts,
   },
-  data() {
+
+  data: function () {
     return {
-      chartData: {
-        labels: ["January", "February", "March"],
-        datasets: [{ data: [40, 20, 12] }],
-      },
+      urlQuestionSurvey: "http://127.0.0.1:8000/api/question",
+      questionSurvey: [],
+      urlResponseSurvey: "http://127.0.0.1:8000/api/survey",
+      responseSurvey: [],
+      urlUserSurvey: "http://127.0.0.1:8000/api/surveyUser",
+      response6Array: [],
+      response7Array: [],
+      response10Array: [],
+      responsePossibility6Array: [],
+      responsePossibility7Array: [],
+      responsePossibility10Array: [],
+      stat6Array: [],
+      stat7Array: [],
+      stat10Array: [],
+      countStat6: 0,
+      countStat7: 0,
+      countStat10: 0,
+      countStat6Array: [],
+      countStat7Array: [],
+      countStat10Array: [],
+
+      series: [],
       chartOptions: {
-        responsive: true,
+        chart: {
+          type: "donut",
+        },
+        responsive: [
+          {
+            breakpoint: 480,
+            options: {
+              chart: {
+                width: 200,
+              },
+              legend: {
+                position: "bottom",
+              },
+            },
+          },
+        ],
       },
     };
   },
-  methods: {},
+
+  mounted() {
+    axios.get(this.urlQuestionSurvey).then((data) => {
+      this.questionSurvey = data["data"];
+    });
+    axios.get(this.urlResponseSurvey).then((data) => {
+      this.responseSurvey = data["data"];
+    });
+    axios.get(this.urlUserSurvey).then((data) => {
+      this.userSurvey = data["data"];
+    });
+  },
+
+  methods: {
+    getResponse6710() {
+      this.response6Array = [];
+      this.response7Array = [];
+      this.response10Array = [];
+      this.responsePossibility6Array = [];
+      this.responsePossibility7Array = [];
+      this.responsePossibility10Array = [];
+      this.countStat6Array = [];
+      this.countStat7Array = [];
+      this.countStat10Array = [];
+      for (const response of this.responseSurvey) {
+        const response_id_question = response.question_id;
+        for (const question of this.questionSurvey) {
+          if (question.id == 6 && question.id == response_id_question) {
+            this.responsePossibility6Array = [];
+            this.responsePossibility6Array = question.response_possibility;
+            this.response6Array.push(response.response);
+          } else if (question.id == 7 && question.id == response_id_question) {
+            this.responsePossibility7Array = [];
+            this.responsePossibility7Array = question.response_possibility;
+            this.response7Array.push(response.response);
+          } else if (question.id == 10 && question.id == response_id_question) {
+            this.responsePossibility10Array = [];
+            this.responsePossibility10Array = question.response_possibility;
+            this.response10Array.push(response.response);
+          }
+        }
+      }
+      this.countStat6Array = [];
+      this.responsePossibility6Array.forEach((responses6) => {
+        this.countStat6 = 0;
+        this.response6Array.forEach((element6) => {
+          if (element6 == responses6) {
+            this.countStat6++;
+          }
+        });
+        this.countStat6Array.push(this.countStat6);
+      });
+      this.responsePossibility7Array.forEach((responses7) => {
+        this.countStat7 = 0;
+        this.response7Array.forEach((element7) => {
+          if (element7 == responses7) this.countStat7++;
+        });
+        this.countStat7Array.push(this.countStat7);
+      });
+      this.responsePossibility10Array.forEach((responses10) => {
+        this.countStat10 = 0;
+        this.response10Array.forEach((element10) => {
+          if (element10 == responses10) this.countStat10++;
+        });
+        this.countStat10Array.push(this.countStat10);
+      });
+      console.log(this.countStat6Array);
+
+      return [
+        this.responsePossibility6Array,
+        this.responsePossibility7Array,
+        this.responsePossibility10Array,
+        this.countStat6Array,
+      ];
+    },
+  },
 };
 </script>
 
@@ -73,17 +148,16 @@ export default {
     <div class="col-3">
       <NavBar />
     </div>
-    <Bar
-      :chart-options="chartOptions"
-      :chart-data="chartData"
-      :chart-id="chartId"
-      :dataset-id-key="datasetIdKey"
-      :plugins="plugins"
-      :css-classes="cssClasses"
-      :styles="styles"
-      :width="width"
-      :height="height"
-    />
+
+    <div>
+      <apexchart
+        type="donut"
+        :options="chartOptions"
+        :series="getResponse6710()[3]"
+      ></apexchart>
+
+      {{ getResponse6710()[3] }}
+    </div>
   </div>
 </template>
 
