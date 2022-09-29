@@ -72,7 +72,7 @@ class SurveySeeder extends Seeder
                         [
                         'question_id' => $i,
                         'survey_user_id'=> $j,
-                        'response' => rand(0, 5),
+                        'response' => rand(1, 5),
                         ]);
                         break;
                     case 5:
@@ -112,7 +112,7 @@ class SurveySeeder extends Seeder
                         [
                         'question_id' => $i,
                         'survey_user_id'=> $j,
-                        'response' => rand(0, 5),
+                        'response' => rand(1, 5),
                         ]);
                         break;
                     case 10:
@@ -128,7 +128,7 @@ class SurveySeeder extends Seeder
                         [
                         'question_id' => $i,
                         'survey_user_id'=> $j,
-                        'response' => rand(0, 5),
+                        'response' => rand(1, 5),
                         ]);
                         break;
                     case 12:
@@ -136,7 +136,7 @@ class SurveySeeder extends Seeder
                         [
                         'question_id' => $i,
                         'survey_user_id'=> $j,
-                        'response' => rand(0, 5),
+                        'response' => rand(1, 5),
                         ]);
                         break;
                     case 13:
@@ -144,7 +144,7 @@ class SurveySeeder extends Seeder
                         [
                         'question_id' => $i,
                         'survey_user_id'=> $j,
-                        'response' => rand(0, 5),
+                        'response' => rand(1, 5),
                         ]);
                         break;
                     case 14:
@@ -152,7 +152,7 @@ class SurveySeeder extends Seeder
                         [
                         'question_id' => $i,
                         'survey_user_id'=> $j,
-                        'response' => rand(0, 5),
+                        'response' => rand(1, 5),
                         ]);
                         break;
                     case 15:
@@ -160,7 +160,7 @@ class SurveySeeder extends Seeder
                         [
                         'question_id' => $i,
                         'survey_user_id'=> $j,
-                        'response' => rand(0, 5),
+                        'response' => rand(1, 5),
                         ]);
                         break;
                     case 16:
@@ -184,7 +184,7 @@ class SurveySeeder extends Seeder
                         [
                         'question_id' => $i,
                         'survey_user_id'=> $j,
-                        'response' => rand(0, 5),
+                        'response' => rand(1, 5),
                         ]);
                         break;
                     case 19:
@@ -192,7 +192,7 @@ class SurveySeeder extends Seeder
                         [
                         'question_id' => $i,
                         'survey_user_id'=> $j,
-                        'response' => rand(0, 5),
+                        'response' => rand(1, 5),
                         ]);
                         break;
                     case 20:

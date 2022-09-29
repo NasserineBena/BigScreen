@@ -28,7 +28,7 @@ class SurveyUserController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {   
+    {
         $faker= app(Generator::class);
         $surveyUser = new SurveyUser;
         $surveyUser->email = $request->email;
