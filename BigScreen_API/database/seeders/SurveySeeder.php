@@ -22,10 +22,6 @@ class SurveySeeder extends Seeder
         return $key;
     }
 
-    public function getSurveys(){
-        for($i=0; $i<20; $i++){
-        }
-    }
     public function run()
     {
         $faker = app(Generator::class);
@@ -49,7 +45,7 @@ class SurveySeeder extends Seeder
         ];
         $surveyResponseData = [];
         $j = 1;
-        while($j<3){
+        while($j<11){
             for($i=1; $i<21; $i++){
                 switch($i){
                     case 1:

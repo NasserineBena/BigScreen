@@ -74,20 +74,26 @@ export default {
     <div class="col-3">
       <NavBar />
     </div>
-    <div class="col-9">
+    <div class="col-9 position">
       <table id="customers">
-        <tr>
-          <th>Numéro</th>
-          <th>Question</th>
-          <th>Réponse</th>
+        <tr class="row">
+          <th class="col-2">Numéro</th>
+          <th class="col-5">Question</th>
+          <th class="col-5">Réponse</th>
         </tr>
-        <tbody v-for="item in getSurvey()" v-bind:value="item.id">
-          <tr>
-            <td>{{ item.questionNumber }}</td>
-            <td>{{ item.questionName }}</td>
-            <td>{{ item.questionResponse }}</td>
-          </tr>
-        </tbody>
+        <div class="pos-overflow w-100">
+          <tbody
+            v-for="item in getSurvey()"
+            v-bind:value="item.id"
+            class="w-100"
+          >
+            <tr class="w-100">
+              <td class="col-2">{{ item.questionNumber }}</td>
+              <td class="col-5">{{ item.questionName }}</td>
+              <td class="col-5">{{ item.questionResponse }}</td>
+            </tr>
+          </tbody>
+        </div>
       </table>
     </div>
   </div>
@@ -131,5 +137,14 @@ export default {
   text-align: left;
   background-color: #34495e;
   color: white;
+}
+
+.position {
+  overflow: hidden;
+  height: 93vh;
+}
+.pos-overflow {
+  overflow: scroll;
+  height: 85vh;
 }
 </style>

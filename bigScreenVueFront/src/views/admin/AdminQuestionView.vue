@@ -1,7 +1,6 @@
 <script>
 import NavBar from "../../components/admin/NavBar.vue";
 import axios from "axios";
-
 export default {
   components: {
     NavBar,
@@ -24,23 +23,29 @@ export default {
 
 <template>
   <div class="row">
-    <div class="col-3">
+    <div class="col-3 nav">
       <NavBar />
     </div>
-    <div class="col-9">
+    <div class="col-9 position">
       <table id="customers">
-        <tr>
-          <th>Numéro</th>
-          <th>Question</th>
-          <th>Type</th>
+        <tr class="row">
+          <th class="col-3">Numéro</th>
+          <th class="col-6">Question</th>
+          <th class="col-3">Type</th>
         </tr>
-        <tbody v-for="item in questionSurvey" v-bind:value="item.id">
-          <tr>
-            <td>{{ item.id }}</td>
-            <td>{{ item.question }}</td>
-            <td>{{ item.type }}</td>
-          </tr>
-        </tbody>
+        <div class="pos-overflow w-100">
+          <tbody
+            v-for="item in questionSurvey"
+            v-bind:value="item.id"
+            class="w-100"
+          >
+            <tr class="w-100">
+              <td class="col-3">{{ item.id }}</td>
+              <td class="col-6">{{ item.question }}</td>
+              <td class="col-3">{{ item.type }}</td>
+            </tr>
+          </tbody>
+        </div>
       </table>
     </div>
   </div>
@@ -48,41 +53,43 @@ export default {
 
 <style scoped>
 .row {
-  display: flex;
   margin: 0px;
   padding: 0px;
 }
-.col-3 {
-  width: 20%;
+.nav {
   background-color: #34495e;
   padding-top: 100px;
 }
-
 #customers {
   font-family: Arial, Helvetica, sans-serif;
   border-collapse: collapse;
   width: 100%;
 }
-
 #customers td,
 #customers th {
   border: 1px solid #ddd;
   padding: 8px;
 }
-
 #customers tr:nth-child(even) {
   background-color: #f2f2f2;
 }
-
 #customers tr:hover {
   background-color: #ddd;
 }
-
 #customers th {
   padding-top: 12px;
   padding-bottom: 12px;
   text-align: left;
   background-color: #34495e;
   color: white;
+}
+
+.position {
+  overflow: hidden;
+  height: 93vh;
+}
+.pos-overflow {
+  overflow: scroll;
+  height: 87vh;
 }
 </style>
