@@ -62,7 +62,7 @@ const router = createRouter({
     },
     { 
       path: '/surveyResponse/:id', 
-      name: ":id",
+      name: "surveyResponse",
       component: () => import("../views/public/SurveyResponseView.vue"),  
     },
   ],
