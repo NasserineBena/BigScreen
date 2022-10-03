@@ -35,33 +35,34 @@ export default {
             return true;
         },
         validate(){
-            if(this.checkValidate()== true){
-                axios
-                .post(this.urlAPi+"surveyUser", {
-                email: this.surveyResponse[1],
-                })
-                .then((data) => {
-                    const id_user= data.data.id;
-                    const token_user= data.data.token
-                    console.log(data);
-                    for(const element of this.surveyQuestions ) {
-                        axios
-                        .post(this.urlAPi+"survey", {
-                        question_id: element.id,
-                        survey_user_id : id_user,
-                        response: this.surveyResponse[element.id],
-                        })
-                    }
-                    this.message= true;
-                    this.token = token_user
-                    // this.$router.push("surveyResponse/"+token_user);
+            console.log(this.surveyResponse);
+            // if(this.checkValidate()== true){
+            //     axios
+            //     .post(this.urlAPi+"surveyUser", {
+            //     email: this.surveyResponse[1],
+            //     })
+            //     .then((data) => {
+            //         const id_user= data.data.id;
+            //         const token_user= data.data.token
+            //         console.log(data);
+            //         for(const element of this.surveyQuestions ) {
+            //             axios
+            //             .post(this.urlAPi+"survey", {
+            //             question_id: element.id,
+            //             survey_user_id : id_user,
+            //             response: this.surveyResponse[element.id],
+            //             })
+            //         }
+            //         this.message= true;
+            //         this.token = token_user
+            //         // this.$router.push("surveyResponse/"+token_user);
 
-                })
-                .catch((e) => {
-                    alert(e);
-                });
+            //     })
+            //     .catch((e) => {
+            //         alert(e);
+            //     });
 
-            }
+            // }
         },
         closeMessage(){
             this.message= false;
@@ -80,21 +81,32 @@ export default {
             <div v-for="question in surveyQuestions" v-bind:value="question.id">
                 <p class="titleQuestion">{{question.question}}</p>
                 <div v-if="question.type==='A'">
-                     <select v-model="surveyResponse[question.id]">
+                     <!-- <select v-model="surveyResponse[question.id]">
                         <option v-for="item in question.response_possibility">
                             {{ item }}
                         </option>
-                     </select>
+                     </select> -->
+                     <div class="d-flex flex-wrap">
+                        <div v-for="item in question.response_possibility" class="d-flex mr-5"  >
+                            <input class="mr-1" type="radio" v-bind:value="item" v-model="surveyResponse[question.id]">{{item}}
+                        </div>
+                     </div>
                 </div>
                 <div v-if="question.type==='B'">
                     <textarea maxlength="250" rows="7" v-model="surveyResponse[question.id]"></textarea>
                 </div>
                 <div v-if="question.type==='C'">
-                    <select v-model="surveyResponse[question.id]">
+                    <!-- <select v-model="surveyResponse[question.id]">
                         <option v-for="item in responseTypeC">
                             {{ item }}
                         </option>
-                     </select>
+                     </select> -->
+                     <div class="d-flex">
+                        <div v-for="item in responseTypeC" class=" mr-5"  >
+                            <input class="mr-1" type="radio" v-bind:value="item" v-model="surveyResponse[question.id]">{{item}}
+                        </div>
+                     </div>
+                    
                 </div>
             </div>
             <div>
@@ -112,7 +124,7 @@ export default {
 </template>
 
 <style scoped>
-
+@import 'bootstrap.css'
 .checkbox{
     margin-right: 30px;
 }

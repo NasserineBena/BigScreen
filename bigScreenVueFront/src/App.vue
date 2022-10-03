@@ -57,22 +57,22 @@ export default {
 </script>
 
 <template>
-  <header>
+  <header v-if="currentRouteName == 'surveyQuestion'|| currentRouteName=='surveyResponse' ">
     <h1>BIGSCREEN</h1>
     <div>
       <p
         class="buttonAuth"
-        v-if="connexion == true"
+        v-if="connexion == true && currentRouteName != 'surveyQuestion'"
         v-on:click.prevent="logout"
       >
         Déconnexion
       </p>
       <p
         class="buttonAuth"
-        v-if="connexion == false"
+        v-if="connexion == true && (currentRouteName == 'surveyQuestion' || currentRouteName=='surveyResponse')"
         v-on:click.prevent="login"
       >
-        Connexion
+        Admin
       </p>
     </div>
   </header>
@@ -86,6 +86,9 @@ export default {
 
 <style scoped>
 @import url("https://fonts.googleapis.com/css2?family=Michroma&display=swap");
+*{
+ margin: 10px;
+}
 header {
   line-height: 1.5;
   max-height: 100vh;
