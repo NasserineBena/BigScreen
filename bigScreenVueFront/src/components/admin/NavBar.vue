@@ -7,7 +7,7 @@
         <a href="/admin/questionnaire">Questionnaire</a>
       </div>
       <div class="padding"><a href="/admin/reponses">Réponses</a></div>
-      <div v-on:click.prevent="logout" class="padding"><a href="/admin/reponses">Déconnexion</a></div>
+       <div v-on:click.prevent="logout" class="padding"><a href="/admin/reponses">Déconnexion</a></div>
     </div>
   </div>
 </template>
