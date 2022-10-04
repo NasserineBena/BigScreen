@@ -5,7 +5,6 @@ export default {
   props: {
     token: String,
   },
-  emits: ["closeMessage"],
   data() {
     return {
       urlAPi: import.meta.env.VITE_URL_API,
@@ -14,11 +13,6 @@ export default {
   computed: {
     currentRouteName() {
       return window.location.href;
-    },
-  },
-  methods: {
-    messageClose() {
-      this.$emit("closeMessage");
     },
   },
 };
@@ -40,9 +34,6 @@ export default {
       reponses autrement !
     </p>
 
-    <div class="button">
-      <button @click="messageClose()">OK</button>
-    </div>
   </div>
 </template>
 

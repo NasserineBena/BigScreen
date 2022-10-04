@@ -67,13 +67,6 @@ export default {
       >
         Déconnexion
       </p>
-      <p
-        class="buttonAuth"
-        v-if="connexion == true && (currentRouteName == 'surveyQuestion' || currentRouteName=='surveyResponse')"
-        v-on:click.prevent="login"
-      >
-        Admin
-      </p>
     </div>
   </header>
 
