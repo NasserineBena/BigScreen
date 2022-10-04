@@ -40,7 +40,7 @@ export default {
           localStorage.removeItem("access_token");
         })
         .catch((error) => {
-          window.alert("Vous ne pouvez pas se déconnecter ");
+          window.alert("Vous ne pouvez pas vous déconnecter ");
         });
     },
   },
@@ -49,8 +49,6 @@ export default {
 <style scoped>
 @import url("https://fonts.googleapis.com/css2?family=Michroma&display=swap");
 
-.container-data {
-}
 .title {
   color: white;
   font-size: 35px;
@@ -66,14 +64,14 @@ export default {
 a {
   text-decoration: none;
   cursor: pointer;
-  color: white;
+  color: white !important;
   font-size: 20px;
 }
 a:hover {
   border: 1px solid #f5f6fa;
   border-radius: 10px;
   background-color: #f5f6fa;
-  color: black;
+  color: #34495e !important;
   padding: 10px;
 }
 .padding {
