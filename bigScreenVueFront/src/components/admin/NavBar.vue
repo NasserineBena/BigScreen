@@ -1,13 +1,13 @@
 <template>
-  <div class="container">
-    <div class="title">bigscreen</div>
+  <div class="d-flex flex-column align-items-center">
+    <div class="title mt-4">Bigscreen</div>
     <div class="content">
-      <div class="padding"><a href="/admin/accueil"> Accueil</a></div>
-      <div class="padding">
+      <div class="pt-5"><a href="/admin/accueil"> Accueil</a></div>
+      <div class="pt-4">
         <a href="/admin/questionnaire">Questionnaire</a>
       </div>
-      <div class="padding"><a href="/admin/reponses">Réponses</a></div>
-       <div v-on:click.prevent="logout" class="padding"><a href="/admin/reponses">Déconnexion</a></div>
+      <div class="pt-4"><a href="/admin/reponses">Réponses</a></div>
+      <div v-on:click.prevent="logout" class="pt-4"><a>Déconnexion</a></div>
     </div>
   </div>
 </template>
@@ -27,7 +27,7 @@ export default {
     logout() {
       let token = localStorage.getItem("access_token");
       axios
-        .post(this.urlApi+"logout", null, {
+        .post(this.urlApi + "logout", null, {
           headers: {
             "Content-Type": "application/json",
             Authorization: "Bearer " + token,
@@ -40,26 +40,39 @@ export default {
           localStorage.removeItem("access_token");
         })
         .catch((error) => {
-          window.alert("Vous ne pouvez pas se déconnecter ");
+          window.alert("Vous ne pouvez pas vous déconnecter ");
         });
-    },   
+    },
   },
 };
 </script>
 <style scoped>
-.container {
+@import url("https://fonts.googleapis.com/css2?family=Michroma&display=swap");
+
+.title {
+  color: white;
+  font-size: 35px;
+  font-family: "Michroma";
+  font-weight: 900;
   width: fit-content;
   margin: 0 auto;
 }
-.title {
-  color: white;
-  font-size: 24px;
+.content {
+  width: fit-content;
+  margin: 0 auto;
 }
 a {
   text-decoration: none;
   cursor: pointer;
-  color: white;
+  color: white !important;
   font-size: 20px;
+}
+a:hover {
+  border: 1px solid #f5f6fa;
+  border-radius: 10px;
+  background-color: #f5f6fa;
+  color: #34495e !important;
+  padding: 10px;
 }
 .padding {
   padding-top: 20px;

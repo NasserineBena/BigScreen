@@ -23,7 +23,7 @@ export default {
 
 <template>
   <div class="row">
-    <div class="col-3 nav">
+    <div class="col-3 nav-style">
       <NavBar />
     </div>
     <div class="col-9 position">
@@ -56,10 +56,12 @@ export default {
   margin: 0px;
   padding: 0px;
 }
-.nav {
+.nav-style {
+  width: 20%;
   background-color: #34495e;
-  padding-top: 100px;
+  /* padding-top: 100px; */
 }
+
 #customers {
   font-family: Arial, Helvetica, sans-serif;
   border-collapse: collapse;
@@ -86,10 +88,10 @@ export default {
 
 .position {
   overflow: hidden;
-  height: 93vh;
+  height: 100vh;
 }
 .pos-overflow {
   overflow: scroll;
-  height: 87vh;
+  height: 92vh;
 }
 </style>

@@ -141,9 +141,6 @@ export default {
 
       //  initialize chart options for each question
       let chartOptionsQuestion6 = {
-        title: {
-          text: "Statistiques sur la questions 6",
-        },
         labels: this.responsePossibility6Array,
         responsive: [
           {
@@ -158,12 +155,17 @@ export default {
             },
           },
         ],
+        grid: {
+          padding: {
+            left: -150,
+          },
+        },
+        legend: {
+          offsetX: 130,
+        },
       };
 
       let chartOptionsQuestion7 = {
-        title: {
-          text: "Statistiques sur la questions 7",
-        },
         labels: this.responsePossibility7Array,
         responsive: [
           {
@@ -178,12 +180,17 @@ export default {
             },
           },
         ],
+        grid: {
+          padding: {
+            left: -150,
+          },
+        },
+        legend: {
+          offsetX: 130,
+        },
       };
 
       let chartOptionsQuestion10 = {
-        title: {
-          text: "Statistiques sur la questions 10",
-        },
         labels: this.responsePossibility10Array,
         responsive: [
           {
@@ -198,6 +205,14 @@ export default {
             },
           },
         ],
+        grid: {
+          padding: {
+            left: -150,
+          },
+        },
+        legend: {
+          offsetX: 120,
+        },
       };
 
       // return a table to get every argument in the tenmplate
@@ -359,9 +374,6 @@ export default {
         chart: {
           type: "radar",
         },
-        title: {
-          text: "Statistiques sur les questions 11, 12, 13, 14, 15",
-        },
         xaxis: {
           categories: [
             "Question 1",
@@ -393,37 +405,50 @@ export default {
     </div>
 
     <div class="col-9 position">
-      <div class="">
-        <apexchart
-          type="donut"
-          :options="getResponse6710[3]"
-          :series="getResponse6710[0]"
-          :height="200"
-          :width="550"
-        ></apexchart>
-
-        <apexchart
-          type="donut"
-          :options="getResponse6710[4]"
-          :series="getResponse6710[1]"
-          :height="200"
-          :width="500"
-        ></apexchart>
-
-        <apexchart
-          type="donut"
-          :options="getResponse6710[5]"
-          :series="getResponse6710[2]"
-          :height="200"
-          :width="550"
-        ></apexchart>
-
-        <apexchart
-          type="radar"
-          height="500"
-          :options="getResultsQuality[0]"
-          :series="getResultsQuality[1]"
-        ></apexchart>
+      <div class="pt-5 pb-5">
+        <div class="row">
+          <div class="col-5 border border-color rounded-3 m-3 py-2">
+            <p>Statistiques sur la questions 6</p>
+            <apexchart
+              type="donut"
+              :options="getResponse6710[3]"
+              :series="getResponse6710[0]"
+              :height="200"
+              :width="550"
+            ></apexchart>
+          </div>
+          <div class="col-5 border border-color rounded-3 m-3 py-2">
+            <p>Statistiques sur la questions 7</p>
+            <apexchart
+              type="donut"
+              :options="getResponse6710[4]"
+              :series="getResponse6710[1]"
+              :height="200"
+              :width="500"
+            ></apexchart>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-5 border border-color rounded-3 m-3 px-2 py-4">
+            <p>Statistiques sur la questions 10</p>
+            <apexchart
+              type="donut"
+              :options="getResponse6710[5]"
+              :series="getResponse6710[2]"
+              :height="200"
+              :width="550"
+            ></apexchart>
+          </div>
+          <div class="border border-color rounded-3 m-3 pt-4 col-5">
+            <p>Statistiques des question 11, 12, 13, 14 et 15</p>
+            <apexchart
+              type="radar"
+              height="500"
+              :options="getResultsQuality[0]"
+              :series="getResultsQuality[1]"
+            ></apexchart>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -439,15 +464,16 @@ export default {
   width: 20%;
   background-color: #34495e;
   padding-top: 100px;
-  height: 93vh;
+  height: 100vh;
 }
 
 .position {
   overflow: auto;
-  height: 80vh;
+  height: 95vh;
 }
-.pos-overflow {
-  overflow: hidden;
-  height: 70vh;
+
+.vue-apexcharts {
+  margin: 0px !important;
+  padding: 0px !important;
 }
 </style>
