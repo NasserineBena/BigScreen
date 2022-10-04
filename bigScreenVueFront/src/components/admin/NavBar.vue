@@ -1,13 +1,19 @@
 <template>
-  <div class="d-flex flex-column align-items-center">
+  <div class="">
     <div class="title mt-4">Bigscreen</div>
-    <div class="content">
-      <div class="pt-5"><a href="/admin/accueil"> Accueil</a></div>
-      <div class="pt-4">
+    <div class="content d-flex flex-lg-column flex-row justify-content-around">
+      <div class="pt-lg-5 pt-4 mx-lg-0 mx-2">
+        <a href="/admin/accueil"> Accueil</a>
+      </div>
+      <div class="pt-4 mx-lg-0 mx-2">
         <a href="/admin/questionnaire">Questionnaire</a>
       </div>
-      <div class="pt-4"><a href="/admin/reponses">Réponses</a></div>
-      <div v-on:click.prevent="logout" class="pt-4"><a>Déconnexion</a></div>
+      <div class="pt-4 mx-lg-0 mx-2">
+        <a href="/admin/reponses">Réponses</a>
+      </div>
+      <div v-on:click.prevent="logout" class="pt-4 mx-lg-0 mx-2">
+        <a>Déconnexion</a>
+      </div>
     </div>
   </div>
 </template>
