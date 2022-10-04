@@ -19,7 +19,7 @@ export default {
     logout() {
       let token = localStorage.getItem("access_token");
       axios
-        .post(this.urlApi+"logout", null, {
+        .post(this.urlApi + "logout", null, {
           headers: {
             "Content-Type": "application/json",
             Authorization: "Bearer " + token,
@@ -93,6 +93,10 @@ header {
 .buttonAuth {
   cursor: pointer;
 }
+/* .position {
+  position: sticky;
+  top: 10px;
+} */
 </style>
 
 <!-- <style scoped>
