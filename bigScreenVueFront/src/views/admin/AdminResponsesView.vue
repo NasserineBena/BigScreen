@@ -84,7 +84,7 @@ export default {
         <div class="pos-overflow w-100">
           <tbody
             v-for="item in getSurvey()"
-            v-bind:value="item.id"
+            v-bind:value="item.questionNumber"
             class="w-100"
           >
             <tr class="w-100">
@@ -92,6 +92,10 @@ export default {
               <td class="col-5">{{ item.questionName }}</td>
               <td class="col-5">{{ item.questionResponse }}</td>
             </tr>
+            <div v-if="item.questionNumber == 20">
+              <br />
+              <br />
+            </div>
           </tbody>
         </div>
       </table>
@@ -100,6 +104,9 @@ export default {
 </template>
 
 <style scoped>
+* {
+  /* padding-top:100px */
+}
 .row {
   display: flex;
   margin: 0px;
@@ -108,7 +115,7 @@ export default {
 .col-3 {
   width: 20%;
   background-color: #34495e;
-  padding-top: 100px;
+  /* padding-top: 100px; */
 }
 
 #customers {
@@ -141,10 +148,10 @@ export default {
 
 .position {
   overflow: hidden;
-  height: 93vh;
+  height: 100vh;
 }
 .pos-overflow {
   overflow: scroll;
-  height: 85vh;
+  height: 90vh;
 }
 </style>
