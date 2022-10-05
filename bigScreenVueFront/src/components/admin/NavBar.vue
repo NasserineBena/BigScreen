@@ -2,17 +2,20 @@
   <div class="">
     <div class="title mt-4">Bigscreen</div>
     <div class="content d-flex flex-lg-column flex-row justify-content-around">
-      <div class="mt-lg-5 mt-4 mx-lg-0 mx-2">
-        <a class="p-2" href="/admin/accueil"> Accueil</a>
+      <div class="mt-lg-5 mt-4 mx-lg-0 mx-2 width text-center">
+        <a class="m-4" href="/admin/accueil"> Accueil</a>
       </div>
-      <div class="mt-4 mx-lg-0 mx-2">
-        <a class="p-2" href="/admin/questionnaire">Questionnaire</a>
+      <div class="mt-4 mx-lg-0 mx-2 width text-center">
+        <a class="m-4" href="/admin/questionnaire">Questionnaire</a>
       </div>
-      <div class="mt-4 mx-lg-0 mx-2">
-        <a class="p-2" href="/admin/reponses">Réponses</a>
+      <div class="mt-4 mx-lg-0 mx-2 width text-center">
+        <a class="m-4" href="/admin/reponses">Réponses</a>
       </div>
-      <div v-on:click.prevent="logout" class="mt-4 mx-lg-0 mx-2">
-        <a class="p-2">Déconnexion</a>
+      <div
+        v-on:click.prevent="logout"
+        class="mt-4 mx-lg-0 mx-2 width text-center"
+      >
+        <a class="m-4">Déconnexion</a>
       </div>
     </div>
   </div>
@@ -69,14 +72,22 @@ export default {
 }
 a {
   text-decoration: none;
-  cursor: pointer;
   color: white !important;
   font-size: 20px;
 }
+
 a:hover {
-  border: 1px solid #f5f6fa;
+  color: #34495e !important;
+}
+.width {
+  cursor: pointer;
+  border: 1px solid #4472c4;
   border-radius: 10px;
+  background-color: #4472c4;
+}
+.width:hover {
   background-color: #f5f6fa;
+  border: 1px solid #f5f6fa;
   color: #34495e !important;
 }
 .padding {

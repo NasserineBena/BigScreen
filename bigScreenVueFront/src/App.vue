@@ -58,10 +58,15 @@ export default {
 
 <template>
   <body>
-    <header v-if="currentRouteName == 'surveyQuestion'|| currentRouteName=='surveyResponse' ">
+    <header
+      v-if="
+        currentRouteName == 'surveyQuestion' ||
+        currentRouteName == 'surveyResponse'
+      "
+    >
       <h1 class="text-white">BIGSCREEN</h1>
     </header>
-  
+
     <RouterView
       v-if="currentRouteName == 'login'"
       @getStatusConnexion="getStatusConnexion"
@@ -74,22 +79,18 @@ export default {
 @import url("https://fonts.googleapis.com/css2?family=Michroma&display=swap");
 
 header {
-  position:sticky;
+  position: sticky;
   top: 0;
-  width:100%;
+  width: 100%;
   padding: 30px;
-  background-color: #34495e; 
+  background-color: black;
   line-height: 1.5;
   max-height: 100vh;
   font-family: "Michroma";
   font-weight: 900;
   text-align: center;
-
 }
 .buttonAuth {
   cursor: pointer;
 }
-
 </style>
-
-

@@ -77,16 +77,14 @@ export default {
       <div
         v-for="question in surveyQuestions"
         v-bind:value="question.id"
-        class="border border-white my-5 p-4 rounded bg-customized text-white"
+        class="my-5 p-4 rounded bg-customized text-white"
       >
         <h4 class="text-color mb-4 text-center">
           Question {{ question.id }} / {{ surveyQuestions.length }}
         </h4>
         <h5 class="text-color mb-4">{{ question.question }}</h5>
         <div v-if="question.type === 'A'">
-          <div
-            class="d-flex flex-wrap border border-white rounded-3 p-4 check-customized"
-          >
+          <div class="d-flex flex-wrap border rounded-3 p-4 check-customized">
             <div
               v-for="item in question.response_possibility"
               class="d-flex me-5 reponse"
@@ -109,9 +107,7 @@ export default {
           ></textarea>
         </div>
         <div v-if="question.type === 'C'">
-          <div
-            class="d-flex border border-white rounded-3 p-4 check-customized"
-          >
+          <div class="d-flex border rounded-3 p-4 check-customized">
             <div v-for="item in responseTypeC" class="me-5 reponse">
               <input
                 class="text-color me-1"
@@ -152,7 +148,7 @@ export default {
 .body {
   display: flex;
   justify-content: center;
-  background-color: #eff1f9;
+  background-color: black;
 }
 .text-color {
   color: white;
