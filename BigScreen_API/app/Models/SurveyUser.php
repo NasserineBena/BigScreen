@@ -8,4 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class SurveyUser extends Model
 {
     use HasFactory;
+    public function surveyUser(){
+        return $this-> belongsToMany(Survey::class);
+    }
 }
