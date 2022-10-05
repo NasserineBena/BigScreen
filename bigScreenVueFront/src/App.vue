@@ -57,97 +57,39 @@ export default {
 </script>
 
 <template>
-  <header v-if="currentRouteName == 'surveyQuestion'|| currentRouteName=='surveyResponse' ">
-    <h1>BIGSCREEN</h1>
-    <div>
-      <p
-        class="buttonAuth"
-        v-if="connexion == true && currentRouteName != 'surveyQuestion'"
-        v-on:click.prevent="logout"
-      >
-        Déconnexion
-      </p>
-    </div>
-  </header>
-
-  <RouterView
-    v-if="currentRouteName == 'login'"
-    @getStatusConnexion="getStatusConnexion"
-  />
-  <RouterView v-if="currentRouteName != 'login'" />
+  <body>
+    <header v-if="currentRouteName == 'surveyQuestion'|| currentRouteName=='surveyResponse' ">
+      <h1 class="text-white">BIGSCREEN</h1>
+    </header>
+  
+    <RouterView
+      v-if="currentRouteName == 'login'"
+      @getStatusConnexion="getStatusConnexion"
+    />
+    <RouterView v-if="currentRouteName != 'login'" />
+  </body>
 </template>
 
 <style scoped>
 @import url("https://fonts.googleapis.com/css2?family=Michroma&display=swap");
-*{
- margin: 10px;
-}
+
 header {
+  position:sticky;
+  top: 0;
+  width:100%;
+  padding: 30px;
+  background-color: #34495e; 
   line-height: 1.5;
   max-height: 100vh;
   font-family: "Michroma";
   font-weight: 900;
-  display: flex;
-  justify-content: space-between;
+  text-align: center;
+
 }
 .buttonAuth {
   cursor: pointer;
 }
-/* .position {
-  position: sticky;
-  top: 10px;
-} */
+
 </style>
 
-<!-- <style scoped>
-header {
-  line-height: 1.5;
-  max-height: 100vh;
-}
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
-}
-nav {
-  width: 100%;
-  font-size: 12px;
-  text-align: center;
-  margin-top: 2rem;
-}
-nav a.router-link-exact-active {
-  color: var(--color-text);
-}
-nav a.router-link-exact-active:hover {
-  background-color: transparent;
-}
-nav a {
-  display: inline-block;
-  padding: 0 1rem;
-  border-left: 1px solid var(--color-border);
-}
-nav a:first-of-type {
-  border: 0;
-}
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
-  nav {
-    text-align: left;
-    margin-left: -1rem;
-    font-size: 1rem;
-    padding: 1rem 0;
-    margin-top: 1rem;
-  }
-}
-</style> -->
+

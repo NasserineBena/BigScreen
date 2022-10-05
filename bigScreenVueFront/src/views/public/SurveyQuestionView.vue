@@ -72,51 +72,44 @@ export default {
     },
 };
 </script>
-<template >
+<template>
     <div class="body" v-if="message==false">
-        <div>
-            <div v-for="question in surveyQuestions" v-bind:value="question.id">
-                <p class="titleQuestion">{{question.question}}</p>
+        <div class="mt-5 mx-2">
+            <div v-for="question in surveyQuestions" v-bind:value="question.id" class="border border-white my-5 p-4 rounded">
+                <h4 class="text-color mb-2">Question {{question.id}} / {{surveyQuestions.length}}</h4>
+                <h5 class="text-color mb-4">{{question.question}}</h5>
                 <div v-if="question.type==='A'">
-                     <!-- <select v-model="surveyResponse[question.id]">
-                        <option v-for="item in question.response_possibility">
-                            {{ item }}
-                        </option>
-                     </select> -->
-                     <div class="d-flex flex-wrap">
-                        <div v-for="item in question.response_possibility" class="d-flex mr-5"  >
-                            <input class="mr-1" type="radio" v-bind:value="item" v-model="surveyResponse[question.id]">{{item}}
+                    <div class="d-flex flex-wrap">
+                        <div v-for="item in question.response_possibility" class="d-flex text-color mr-5 reponse"  >
+                            <input class="text-color mr-1" type="radio" v-bind:value="item" v-model="surveyResponse[question.id]">{{item}}
                         </div>
-                     </div>
+                    </div>
                 </div>
                 <div v-if="question.type==='B'">
-                    <textarea maxlength="250" rows="7" v-model="surveyResponse[question.id]"></textarea>
+                    <textarea class="form-control text-color rounded-" maxlength="250" rows="7" v-model="surveyResponse[question.id]"></textarea>
                 </div>
                 <div v-if="question.type==='C'">
-                    <!-- <select v-model="surveyResponse[question.id]">
-                        <option v-for="item in responseTypeC">
-                            {{ item }}
-                        </option>
-                     </select> -->
-                     <div class="d-flex">
-                        <div v-for="item in responseTypeC" class=" mr-5"  >
-                            <input class="mr-1" type="radio" v-bind:value="item" v-model="surveyResponse[question.id]">{{item}}
+                    <div class="d-flex">
+                        <div v-for="item in responseTypeC" class="text-color mr-5 reponse"  >
+                            <input  class="text-color mr-1" type="radio" v-bind:value="item" v-model="surveyResponse[question.id]"> {{item}}
                         </div>
-                     </div>
+                    </div>
                     
                 </div>
             </div>
-            <div>
-                <button v-on:click.prevent="validate">Valider</button>
+            <div class="my-5 text-center">
+                <button v-on:click.prevent="validate" class="bg-white p-3 rounded text-color">Valider</button>
             </div>
         </div>
     </div>
-    <div class="popup" v-if="message==true">
-        <div >
+    <div class="popupMain" v-if="message==true">
+        <div class="popup">
             <Message
             :token="token"/>
         </div>
     </div>
+    
+    
 </template>
 
 <style scoped>
@@ -127,27 +120,34 @@ export default {
 .responseCheckbox{
     display:flex;
 }
-.body{
+.body{  
     
     display:flex;
     justify-content: center;
-    margin-top: 45px;
-
+    background-color: #EFF1F9;
+   
+}
+.text-color{
+    color: #34495e;
 }
 textarea{
+    background-color: white;
     width: 100%;
-    border:dotted 2px black;
+    border:dotted 3px #34495e;
 }
-.titleQuestion{
-    margin-bottom: 20px;
-    margin-top: 20px;
-    font-size: 20px;
-    font-weight:bold;
+.reponse{
+    font-size: 18px;
+}
+.popupMain{
+    position: fixed;
+    background-color: #E6E9F3;
+    height: 100% !important;
+    width: 100%;
 }
 .popup{
-    width: 85%;
-    background-color: white;
-    position: absolute;
+    background-color:white;
+    width: 90%;
+    position: fixed;
     left: 50%;
     top: 50%;
     margin: auto;

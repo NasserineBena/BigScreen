@@ -49,9 +49,10 @@ export default {
 <template>
     <div class="body">
         <div>
-            <div v-for="reponse in surveyResponse">
-                <p class="titleQuestion">{{reponse.question_id}}</p>
+            <div v-for="reponse in surveyResponse" class="border border-white px-5 py-4 my-5 rounded">
+                <h5>{{reponse.question_id}}</h5>
                 <p>{{reponse.response}}</p>
+                
             </div>
         </div>
     </div>
@@ -60,22 +61,15 @@ export default {
 
 <style scoped>
 
-.checkbox{
-    margin-right: 30px;
-}
-.responseCheckbox{
-    display:flex;
-}
 .body{
     display:flex;
     justify-content: center;
-    margin-top: 45px;
+    
+    background-color: #BAD6E5;
+    width: 100%;
 
 }
-textarea{
-    width: 100%;
-    border:dotted 2px black;
-}
+
 .titleQuestion{
     margin-bottom: 20px;
     margin-top: 20px;
