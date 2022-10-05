@@ -79,18 +79,20 @@ export default {
         v-bind:value="question.id"
         class="border border-white my-5 p-4 rounded bg-customized text-white"
       >
-        <h4 class="text-color mb-2">
+        <h4 class="text-color mb-4 text-center">
           Question {{ question.id }} / {{ surveyQuestions.length }}
         </h4>
         <h5 class="text-color mb-4">{{ question.question }}</h5>
         <div v-if="question.type === 'A'">
-          <div class="d-flex flex-wrap">
+          <div
+            class="d-flex flex-wrap border border-white rounded-3 p-4 check-customized"
+          >
             <div
               v-for="item in question.response_possibility"
-              class="d-flex text-color me-5 reponse"
+              class="d-flex me-5 reponse"
             >
               <input
-                class="text-color me-1"
+                class="me-1"
                 type="radio"
                 v-bind:value="item"
                 v-model="surveyResponse[question.id]"
@@ -107,8 +109,10 @@ export default {
           ></textarea>
         </div>
         <div v-if="question.type === 'C'">
-          <div class="d-flex">
-            <div v-for="item in responseTypeC" class="text-color me-5 reponse">
+          <div
+            class="d-flex border border-white rounded-3 p-4 check-customized"
+          >
+            <div v-for="item in responseTypeC" class="me-5 reponse">
               <input
                 class="text-color me-1"
                 type="radio"
@@ -123,7 +127,7 @@ export default {
       <div class="my-5 text-center">
         <button
           v-on:click.prevent="validate"
-          class="bg-white p-3 rounded text-color"
+          class="bg-white p-3 rounded text-black"
         >
           Valider
         </button>
@@ -156,7 +160,6 @@ export default {
 textarea {
   background-color: #eff1f9;
   width: 100%;
-  border: dotted 3px #34495e;
 }
 .reponse {
   font-size: 18px;
@@ -180,5 +183,10 @@ textarea {
 }
 .bg-customized {
   background-color: #34495e !important;
+}
+
+.check-customized {
+  background-color: #eff1f9;
+  color: #34495e !important;
 }
 </style>
