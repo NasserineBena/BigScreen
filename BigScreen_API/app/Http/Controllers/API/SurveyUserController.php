@@ -10,6 +10,14 @@ use Illuminate\Http\Request;
 
 class SurveyUserController extends Controller
 {
+    public function sendError($error, $code = 404)
+    {
+    	$response = [
+            'success' => false,
+            'message' => $error,
+        ];
+        return response()->json($response, $code);
+    }
     /**
      * Display a listing of the resource.
      *
@@ -33,7 +41,7 @@ class SurveyUserController extends Controller
         foreach($data as $mydata)
         {
             if($mydata==""){
-                return response()->json("Tous les champs doivent être remplis");
+                return $this->sendError('Il faut remplir tous les champs!');
             }
 
         }
@@ -51,15 +59,16 @@ class SurveyUserController extends Controller
                     return response()->json($surveyUser);
                 }
                 else{
-                    return response()->json("Cet email existe déjà");
+                    return $this->sendError('Cet email existe déjà');
                 }
             }
             else{
-                return response()->json("L'âge doit être numeric et plus grand que 5 ans ");
+               
+                return $this->sendError('Le champs âge doit comporter un nombre !');
             }
         }
         else{
-            return response()->json("Cet email n'est pas au bon format");
+            return $this->sendError("Cet email n'est pas au bon format");
         }
         
         // $faker= app(Generator::class);

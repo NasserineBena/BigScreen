@@ -60,7 +60,7 @@ export default {
           this.token = token_user;
         })
         .catch((e) => {
-          alert(e);
+          alert(e.response.data.message);
           console.log(e);
         });
     },
