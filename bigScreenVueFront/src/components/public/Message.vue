@@ -33,14 +33,12 @@ export default {
       Assurez-vous de bien copier ce lien car vous ne pouvez pas accéder à vos
       reponses autrement !
     </p>
-
   </div>
 </template>
 
 <style scoped>
-
 .popup {
-  color:  #34495e;
+  color: #34495e;
   word-wrap: break-word;
   font-size: 20px;
   border: 1px solid black;
