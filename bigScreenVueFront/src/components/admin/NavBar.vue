@@ -2,17 +2,17 @@
   <div class="">
     <div class="title mt-4">Bigscreen</div>
     <div class="content d-flex flex-lg-column flex-row justify-content-around">
-      <div class="pt-lg-5 pt-4 mx-lg-0 mx-2">
-        <a href="/admin/accueil"> Accueil</a>
+      <div class="mt-lg-5 mt-4 mx-lg-0 mx-2">
+        <a class="p-2" href="/admin/accueil"> Accueil</a>
       </div>
-      <div class="pt-4 mx-lg-0 mx-2">
-        <a href="/admin/questionnaire">Questionnaire</a>
+      <div class="mt-4 mx-lg-0 mx-2">
+        <a class="p-2" href="/admin/questionnaire">Questionnaire</a>
       </div>
-      <div class="pt-4 mx-lg-0 mx-2">
-        <a href="/admin/reponses">Réponses</a>
+      <div class="mt-4 mx-lg-0 mx-2">
+        <a class="p-2" href="/admin/reponses">Réponses</a>
       </div>
-      <div v-on:click.prevent="logout" class="pt-4 mx-lg-0 mx-2">
-        <a>Déconnexion</a>
+      <div v-on:click.prevent="logout" class="mt-4 mx-lg-0 mx-2">
+        <a class="p-2">Déconnexion</a>
       </div>
     </div>
   </div>
@@ -78,7 +78,6 @@ a:hover {
   border-radius: 10px;
   background-color: #f5f6fa;
   color: #34495e !important;
-  padding: 10px;
 }
 .padding {
   padding-top: 20px;
