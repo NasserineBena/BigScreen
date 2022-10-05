@@ -71,10 +71,10 @@ export default {
 
 <template>
   <div class="row">
-    <div class="col-3">
+    <div class="col-lg-3 col-12 style pb-lg-0 pb-4 mb-lg-0 mb-4">
       <NavBar />
     </div>
-    <div class="col-9 position">
+    <div class="col-lg-9 col-12 position">
       <table id="customers">
         <tr class="row">
           <th class="col-2">Numéro</th>
@@ -108,14 +108,17 @@ export default {
   /* padding-top:100px */
 }
 .row {
-  display: flex;
   margin: 0px;
   padding: 0px;
 }
-.col-3 {
-  width: 20%;
+.style {
   background-color: #34495e;
-  /* padding-top: 100px; */
+}
+.col-3 {
+  /* display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; */
 }
 
 #customers {

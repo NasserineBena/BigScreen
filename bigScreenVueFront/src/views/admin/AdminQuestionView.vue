@@ -23,10 +23,10 @@ export default {
 
 <template>
   <div class="row">
-    <div class="col-3 nav-style">
+    <div class="col-lg-3 col-12 nav-style pb-lg-0 pb-4 mb-lg-0 mb-4">
       <NavBar />
     </div>
-    <div class="col-9 position">
+    <div class="col-lg-9 col-12 position">
       <table id="customers">
         <tr class="row">
           <th class="col-3">Numéro</th>
@@ -57,9 +57,7 @@ export default {
   padding: 0px;
 }
 .nav-style {
-  width: 20%;
   background-color: #34495e;
-  /* padding-top: 100px; */
 }
 
 #customers {

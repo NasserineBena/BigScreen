@@ -62,11 +62,6 @@ export default {
       countStat6Array: [],
       countStat7Array: [],
       countStat10Array: [],
-      // countStat11Array: [],
-      // countStat12Array: [],
-      // countStat13Array: [],
-      // countStat14Array: [],
-      // countStat15Array: [],
     };
   },
 
@@ -142,51 +137,69 @@ export default {
       //  initialize chart options for each question
       let chartOptionsQuestion6 = {
         labels: this.responsePossibility6Array,
+        grid: {
+          padding: {
+            left: 0,
+          },
+        },
+        legend: {
+          offsetX: -50,
+          offsetY: 50,
+        },
         responsive: [
           {
-            breakpoint: 770,
+            breakpoint: 991,
             options: {
               chart: {
                 width: 500,
               },
               legend: {
                 position: "bottom",
+                offsetX: 0,
+                offsetY: 0,
+              },
+            },
+          },
+          {
+            breakpoint: 768,
+            options: {
+              chart: {
+                width: 300,
               },
             },
           },
         ],
-        grid: {
-          padding: {
-            left: -150,
-          },
-        },
-        legend: {
-          offsetX: 130,
-        },
       };
 
       let chartOptionsQuestion7 = {
         labels: this.responsePossibility7Array,
         responsive: [
           {
-            breakpoint: 770,
+            breakpoint: 991,
             options: {
               chart: {
                 width: 500,
               },
               legend: {
                 position: "bottom",
+                offsetX: -50,
+                offsetY: 0,
+              },
+            },
+          },
+          {
+            breakpoint: 768,
+            options: {
+              chart: {
+                width: 300,
               },
             },
           },
         ],
-        grid: {
-          padding: {
-            left: -150,
-          },
-        },
+
         legend: {
-          offsetX: 130,
+          offsetX: -20,
+          offsetY: 50,
         },
       };
 
@@ -194,24 +207,31 @@ export default {
         labels: this.responsePossibility10Array,
         responsive: [
           {
-            breakpoint: 770,
+            breakpoint: 991,
             options: {
               chart: {
                 width: 500,
               },
               legend: {
                 position: "bottom",
+                offsetX: -50,
+                offsetY: 0,
+              },
+            },
+          },
+          {
+            breakpoint: 768,
+            options: {
+              chart: {
+                width: 300,
               },
             },
           },
         ],
-        grid: {
-          padding: {
-            left: -150,
-          },
-        },
+
         legend: {
-          offsetX: 120,
+          offsetX: -40,
+          offsetY: 50,
         },
       };
 
@@ -238,11 +258,6 @@ export default {
       this.responsePossibility13Array = [];
       this.responsePossibility14Array = [];
       this.responsePossibility15Array = [];
-      // this.countStat11Array = [];
-      // this.countStat12Array = [];
-      // this.countStat13Array = [];
-      // this.countStat14Array = [];
-      // this.countStat15Array = [];
       let avg11 = 0.0;
       let avg12 = 0.0;
       let avg13 = 0.0;
@@ -271,43 +286,6 @@ export default {
           }
         }
       }
-
-      // for (let i = 1; i < 6; i++) {
-      //   this.countStat11 = 0;
-      //   this.response11Array.forEach((element11) => {
-      //     if (element11 == i) this.countStat11++;
-      //   });
-      //   this.countStat11Array.push(this.countStat12);
-      // }
-      // for (let i = 1; i < 6; i++) {
-      //   this.countStat12 = 0;
-      //   this.response12Array.forEach((element12) => {
-      //     if (element12 == i) this.countStat12++;
-      //   });
-      //   this.countStat12Array.push(this.countStat12);
-      // }
-
-      // for (let i = 1; i < 6; i++) {
-      //   this.countStat13 = 0;
-      //   this.response13Array.forEach((element13) => {
-      //     if (element13 == i) this.countStat13++;
-      //   });
-      //   this.countStat13Array.push(this.countStat13);
-      // }
-      // for (let i = 1; i < 6; i++) {
-      //   this.countStat14 = 0;
-      //   this.response14Array.forEach((element14) => {
-      //     if (element14 == i) this.countStat14++;
-      //   });
-      //   this.countStat14Array.push(this.countStat14);
-      // }
-      // for (let i = 1; i < 6; i++) {
-      //   this.countStat15 = 0;
-      //   this.response15Array.forEach((element15) => {
-      //     if (element15 == i) this.countStat15++;
-      //   });
-      //   this.countStat15Array.push(this.countStat15);
-      // }
 
       // iterate through each table to get the average for each question
       this.response11Array.forEach((element11) => {
@@ -348,32 +326,28 @@ export default {
         },
       ];
 
-      // let series = [
-      //   {
-      //     name: "Question 11",
-      //     data: this.countStat11Array,
-      //   },
-      //   {
-      //     name: "Question 12",
-      //     data: this.countStat12Array,
-      //   },
-      //   {
-      //     name: "Question 13",
-      //     data: this.countStat13Array,
-      //   },
-      //   {
-      //     name: "Question 14",
-      //     data: this.countStat14Array,
-      //   },
-      //   {
-      //     name: "Question 15",
-      //     data: this.countStat15Array,
-      //   },
-      // ];
       let chartOptions = {
         chart: {
           type: "radar",
         },
+        responsive: [
+          {
+            breakpoint: 991,
+            options: {
+              chart: {
+                width: 500,
+              },
+            },
+          },
+          {
+            breakpoint: 768,
+            options: {
+              chart: {
+                width: 300,
+              },
+            },
+          },
+        ],
         xaxis: {
           categories: [
             "Question 1",
@@ -382,13 +356,16 @@ export default {
             "Question 4",
             "Question 5",
           ],
-          // categories: [
-          //   1,
-          //   2,
-          //   3,
-          //   4,
-          //   5,
-          // ],
+          labels: {
+            style: {
+              colors: ["#34495e"],
+              fontSize: "13px",
+              fontFamily: "Arial",
+            },
+          },
+        },
+        markers: {
+          colors: ["#34495e"],
         },
       };
 
@@ -400,50 +377,61 @@ export default {
 
 <template>
   <div class="row">
-    <div class="col-3">
+    <div class="col-lg-3 col-12 nav-style pb-lg-0 pb-4 mb-lg-0 mb-4">
       <NavBar />
     </div>
 
-    <div class="col-9 position">
-      <div class="pt-5 pb-5">
+    <div class="col-lg-9 col-12 position">
+      <div class="pt-lg-5 pb-lg-5">
         <div class="row">
-          <div class="col-5 border border-color rounded-3 m-3 py-2">
-            <p>Statistiques sur la questions 6</p>
+          <div
+            class="col-lg-5 col-md-7 col-sm-10 col-12 border border-color rounded-3 py-2 my-4 mx-lg-4 mx-auto w-auto"
+          >
+            <p class="text-center">Statistiques sur la questions 6</p>
             <apexchart
               type="donut"
               :options="getResponse6710[3]"
               :series="getResponse6710[0]"
-              :height="200"
-              :width="550"
+              :height="400"
+              :width="450"
             ></apexchart>
           </div>
-          <div class="col-5 border border-color rounded-3 m-3 py-2">
-            <p>Statistiques sur la questions 7</p>
+          <div
+            class="col-lg-5 col-md-7 col-sm-10 col-12 border border-color rounded-3 py-2 my-4 mx-lg-4 mx-auto w-auto"
+          >
+            <p class="text-center">Statistiques sur la questions 7</p>
             <apexchart
               type="donut"
               :options="getResponse6710[4]"
               :series="getResponse6710[1]"
-              :height="200"
-              :width="500"
+              :height="350"
+              :width="450"
             ></apexchart>
           </div>
         </div>
         <div class="row">
-          <div class="col-5 border border-color rounded-3 m-3 px-2 py-4">
-            <p>Statistiques sur la questions 10</p>
+          <div
+            class="col-lg-5 col-md-7 col-sm-10 col-12 border border-color rounded-3 m-3 py-2 my-4 mx-lg-4 mx-auto w-auto"
+          >
+            <p class="text-center">Statistiques sur la questions 10</p>
             <apexchart
               type="donut"
               :options="getResponse6710[5]"
               :series="getResponse6710[2]"
-              :height="200"
-              :width="550"
+              :height="400"
+              :width="450"
             ></apexchart>
           </div>
-          <div class="border border-color rounded-3 m-3 pt-4 col-5">
-            <p>Statistiques des question 11, 12, 13, 14 et 15</p>
+          <div
+            class="col-lg-5 col-md-7 col-sm-10 col-12 border border-color rounded-3 py-2 my-4 mx-lg-4 mx-auto w-auto"
+          >
+            <p class="text-center">
+              Statistiques des question 11, 12, 13, 14 et 15
+            </p>
             <apexchart
               type="radar"
-              height="500"
+              :height="400"
+              :width="450"
               :options="getResultsQuality[0]"
               :series="getResultsQuality[1]"
             ></apexchart>
@@ -456,24 +444,31 @@ export default {
 
 <style scoped>
 .row {
-  display: flex;
   margin: 0px;
   padding: 0px;
 }
-.col-3 {
-  width: 20%;
+.nav-style {
   background-color: #34495e;
-  padding-top: 100px;
   height: 100vh;
 }
 
 .position {
-  overflow: auto;
+  overflow: scroll !important;
   height: 95vh;
 }
 
 .vue-apexcharts {
   margin: 0px !important;
   padding: 0px !important;
+}
+
+@media only screen and (max-width: 991px) {
+  .nav-style {
+    height: auto;
+    position: sticky;
+  }
+  .position {
+    height: 70vh;
+  }
 }
 </style>
