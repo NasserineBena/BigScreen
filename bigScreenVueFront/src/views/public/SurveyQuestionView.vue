@@ -102,7 +102,7 @@ export default {
         </div>
         <div v-if="question.type === 'B'">
           <textarea
-            class="form-control text-color rounded-4"
+            class="form-control rounded-3"
             maxlength="250"
             rows="7"
             v-model="surveyResponse[question.id]"
@@ -127,7 +127,7 @@ export default {
       <div class="my-5 text-center">
         <button
           v-on:click.prevent="validate"
-          class="bg-white p-3 rounded text-black"
+          class="btn btn-lg btn-customized p-3 rounded-3 text-black"
         >
           Valider
         </button>
@@ -161,6 +161,7 @@ textarea {
   background-color: #eff1f9;
   width: 100%;
 }
+
 .reponse {
   font-size: 18px;
 }
@@ -188,5 +189,14 @@ textarea {
 .check-customized {
   background-color: #eff1f9;
   color: #34495e !important;
+}
+.btn-customized {
+  background-color: #eff1f9;
+  color: #34495e !important;
+  border: 1px solid #34495e;
+}
+.btn-customized:hover {
+  background-color: #34495e;
+  color: #eff1f9 !important;
 }
 </style>
