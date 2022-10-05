@@ -63,14 +63,14 @@ class SurveyUserController extends Controller
                 }
             }
             else{
-               
-                return $this->sendError('Le champs âge doit comporter un nombre !');
+
+                return $this->sendError('Le champs âge doit comporter un nombre entre 5 et 120 !');
             }
         }
         else{
             return $this->sendError("Cet email n'est pas au bon format");
         }
-        
+
         // $faker= app(Generator::class);
         // $surveyUser = new SurveyUser;
         // $surveyUser->email = $request->email;
@@ -94,9 +94,9 @@ class SurveyUserController extends Controller
         // $surveyUser->email = $request->email;
         // $surveyUser->token= $faker->regexify('[A-Za-z0-9]{20}');
         // $surveyUser->save();
-       
-        
-        
+
+
+
     }
 
     /**

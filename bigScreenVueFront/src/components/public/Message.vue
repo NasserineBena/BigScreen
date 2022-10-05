@@ -19,40 +19,34 @@ export default {
 </script>
 
 <template>
-  <div class="popup">
-    <i>
+  <div class="border p-5 rounded-5 popup">
+    <p>
       Toute l’équipe de Bigscreen vous remercie pour votre engagement. Si vous
-      désirez consulter vos réponse , cliquez sur ce lien :
+      désirez consulter vos réponse.
+      <br />
+      Cliquez sur ce lien :
       <a target="_blank" :href="`/surveyResponse/${token}`"
         >http://{{ currentRouteName.split("/")[2] }}/surveyResponse/{{
           token
         }}</a
       >
-    </i>
-    <p class="redAttention">
-      Assurez-vous de bien copier ce lien car vous ne pouvez pas accéder à vos
-      reponses autrement !
     </p>
-
+    <p class="text-danger mt-4">
+      <i class="bi bi-exclamation-triangle"></i>Assurez-vous de bien copier ce
+      lien car vous ne pourrez pas accéder à vos reponses autrement !
+    </p>
   </div>
 </template>
 
 <style scoped>
-
 .popup {
-  color:  #34495e;
+  color: #34495e;
   word-wrap: break-word;
   font-size: 20px;
-  border: 1px solid black;
-  padding: 20px;
   display: block;
   margin: 0px auto;
 }
 .redAttention {
   color: red;
-}
-.button {
-  display: flex;
-  justify-content: center;
 }
 </style>
