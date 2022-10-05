@@ -71,38 +71,54 @@ export default {
 
 <template>
   <div class="row">
-    <div class="col-3">
+    <div class="col-lg-3 col-12 style pb-lg-0 pb-4 mb-lg-0 mb-4">
       <NavBar />
     </div>
-    <div class="col-9">
+    <div class="col-lg-9 col-12 position">
       <table id="customers">
-        <tr>
-          <th>Numéro</th>
-          <th>Question</th>
-          <th>Réponse</th>
+        <tr class="row">
+          <th class="col-2">Numéro</th>
+          <th class="col-5">Question</th>
+          <th class="col-5">Réponse</th>
         </tr>
-        <tbody v-for="item in getSurvey()" v-bind:value="item.id">
-          <tr>
-            <td>{{ item.questionNumber }}</td>
-            <td>{{ item.questionName }}</td>
-            <td>{{ item.questionResponse }}</td>
-          </tr>
-        </tbody>
+        <div class="pos-overflow w-100">
+          <tbody
+            v-for="item in getSurvey()"
+            v-bind:value="item.questionNumber"
+            class="w-100"
+          >
+            <tr class="w-100">
+              <td class="col-2">{{ item.questionNumber }}</td>
+              <td class="col-5">{{ item.questionName }}</td>
+              <td class="col-5">{{ item.questionResponse }}</td>
+            </tr>
+            <div v-if="item.questionNumber == 20">
+              <br />
+              <br />
+            </div>
+          </tbody>
+        </div>
       </table>
     </div>
   </div>
 </template>
 
 <style scoped>
+* {
+  /* padding-top:100px */
+}
 .row {
-  display: flex;
   margin: 0px;
   padding: 0px;
 }
-.col-3 {
-  width: 20%;
+.style {
   background-color: #34495e;
-  padding-top: 100px;
+}
+.col-3 {
+  /* display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; */
 }
 
 #customers {
@@ -131,5 +147,14 @@ export default {
   text-align: left;
   background-color: #34495e;
   color: white;
+}
+
+.position {
+  overflow: hidden;
+  height: 100vh;
+}
+.pos-overflow {
+  overflow: scroll;
+  height: 90vh;
 }
 </style>

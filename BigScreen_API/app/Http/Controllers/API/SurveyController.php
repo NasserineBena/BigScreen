@@ -42,7 +42,15 @@ class SurveyController extends Controller
      */
     public function store(Request $request)
     {
+        
         $survey = new Survey;
+        // if($request->question_id == "2"){
+        //     if(is_numeric($request->response)){
+        //         return response()->json("true");
+        //     }
+        //     return  response()->json("false");
+        //     // return response()->json(gettype($request->response))
+        // }
         $survey->question_id = $request->question_id;
         $survey->survey_user_id  = $request->survey_user_id ;
         $survey->response = $request->response;

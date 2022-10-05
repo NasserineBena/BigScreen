@@ -40,41 +40,54 @@ export default {
 };
 </script>
 <template>
-  <div class="body">
-    <div>
-      <p class="titre">Connexion</p>
-      <form @submit.prevent="login">
-        <div class="fields">
-          <div class="four wide field">
-            <label>E-mail</label><br />
-            <input
-              type="email"
-              name="email"
-              placeholder="email"
-              v-model="email"
-            /><br />
-            <label>Password</label><br />
-            <input
-              type="password"
-              name="password"
-              placeholder="password"
-              v-model="password"
-            /><br />
+  <div class="main">
+    <div class="body" >
+      <div>
+        <p class="titre">BIGSCREEN</p>
+        <form @submit.prevent="login">
+          <div class="fields">
+            <div class="four wide field">
+              <label>E-mail</label><br />
+              <div class="input-group input-group-lg">
+                <input  class="form-control"  
+                        type="email"  name="email"
+                        placeholder="email@email.com" 
+                        v-model="email">
+              </div>
+              <label>Password</label><br />
+              <div class="input-group input-group-lg">
+                <input  class="form-control"  
+                        type="password"
+                        name="password"
+                        placeholder="password"
+                v-model="password">
+              </div>
+            </div>
+            <div class="buttonCenter">
+              <button type="submit" class="buttonConnexion">Connexion</button>
+            </div>
           </div>
-          <div class="buttonCenter">
-            <button type="submit" class="buttonConnexion">Connexion</button>
-          </div>
-        </div>
-      </form>
+        </form>
+      </div>
     </div>
   </div>
 </template>
 <style scoped>
-template {
-  margin-top: 200px;
+@import url("https://fonts.googleapis.com/css2?family=Michroma&display=swap");
+.main{
+  position: fixed;
+  background-color: #DBDFEC;
+  height: 100% !important;
+  width: 100%;
 }
 .body {
-  padding: 50px;
+  
+  padding: 55px;
+  background-color: #34495e;
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
   border-radius: 25px;
   font-size: 18px;
   display: flex;
@@ -82,24 +95,26 @@ template {
   justify-content: center;
 }
 label {
-  color: #0080ff;
+  color: white;
+  margin-top: 10px; 
+  font-size: 25px;
 }
 .titre {
   color: #0080ff;
   font-size: 30px;
   text-align: center;
-  margin: 20px;
+  
+  font-family: "Michroma";
 }
-input {
-  padding: 12px;
-  min-width: 250px;
-  border-radius: 5px;
-  margin-top: 15px;
-  margin-bottom: 15px;
+input{
+  min-width: 300px;
 }
+
 .buttonCenter {
   display: flex;
   justify-content: center;
+ 
+  
 }
 .buttonConnexion {
   display: flex;
@@ -108,7 +123,8 @@ input {
   margin-top: 30px;
   padding: 8px;
   border-radius: 8px;
-  font-size: 15px;
-  color: green;
+  font-size: 20px;
+  color: #34495e;
+  background-color: white;
 }
 </style>

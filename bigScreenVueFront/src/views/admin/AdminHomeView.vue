@@ -62,34 +62,6 @@ export default {
       countStat6Array: [],
       countStat7Array: [],
       countStat10Array: [],
-      countStat11Array: [],
-      countStat12Array: [],
-      countStat13Array: [],
-      countStat14Array: [],
-      countStat15Array: [],
-
-      series: [
-        {
-          name: "Series 1",
-          data: [80, 50, 30, 40, 100, 20],
-        },
-        {
-          name: "Series 2",
-          data: [20, 40, 70, 50, 60, 80],
-        },
-      ],
-      chartOptions: {
-        chart: {
-          height: 350,
-          type: "radar",
-        },
-        title: {
-          text: "Basic Radar Chart",
-        },
-        xaxis: {
-          categories: ["January", "February", "March", "April", "May", "June"],
-        },
-      },
     };
   },
 
@@ -106,6 +78,7 @@ export default {
   },
 
   computed: {
+    // function to get the number of response by category and by question / chart options
     getResponse6710() {
       this.response6Array = [];
       this.response7Array = [];
@@ -116,6 +89,8 @@ export default {
       this.countStat6Array = [];
       this.countStat7Array = [];
       this.countStat10Array = [];
+
+      // Use a loop to get all responses by question id and put them in an array
       for (const response of this.responseSurvey) {
         const response_id_question = response.question_id;
         for (const question of this.questionSurvey) {
@@ -134,6 +109,9 @@ export default {
           }
         }
       }
+
+      // iterate through each table to get the number of response by category
+
       this.responsePossibility6Array.forEach((responses6) => {
         this.countStat6 = 0;
         this.response6Array.forEach((element6) => {
@@ -156,20 +134,37 @@ export default {
         this.countStat10Array.push(this.countStat10);
       });
 
+      //  initialize chart options for each question
       let chartOptionsQuestion6 = {
-        title: {
-          text: "Statistiques sur la questions 6",
-        },
         labels: this.responsePossibility6Array,
+        grid: {
+          padding: {
+            left: 0,
+          },
+        },
+        legend: {
+          offsetX: -50,
+          offsetY: 50,
+        },
         responsive: [
           {
-            breakpoint: 770,
+            breakpoint: 991,
             options: {
               chart: {
                 width: 500,
               },
               legend: {
                 position: "bottom",
+                offsetX: 0,
+                offsetY: 0,
+              },
+            },
+          },
+          {
+            breakpoint: 768,
+            options: {
+              chart: {
+                width: 300,
               },
             },
           },
@@ -177,45 +172,70 @@ export default {
       };
 
       let chartOptionsQuestion7 = {
-        title: {
-          text: "Statistiques sur la questions 7",
-        },
         labels: this.responsePossibility7Array,
         responsive: [
           {
-            breakpoint: 770,
+            breakpoint: 991,
             options: {
               chart: {
                 width: 500,
               },
               legend: {
                 position: "bottom",
+                offsetX: -50,
+                offsetY: 0,
+              },
+            },
+          },
+          {
+            breakpoint: 768,
+            options: {
+              chart: {
+                width: 300,
               },
             },
           },
         ],
+
+        legend: {
+          offsetX: -20,
+          offsetY: 50,
+        },
       };
 
       let chartOptionsQuestion10 = {
-        title: {
-          text: "Statistiques sur la questions 10",
-        },
         labels: this.responsePossibility10Array,
         responsive: [
           {
-            breakpoint: 770,
+            breakpoint: 991,
             options: {
               chart: {
                 width: 500,
               },
               legend: {
                 position: "bottom",
+                offsetX: -50,
+                offsetY: 0,
+              },
+            },
+          },
+          {
+            breakpoint: 768,
+            options: {
+              chart: {
+                width: 300,
               },
             },
           },
         ],
+
+        legend: {
+          offsetX: -40,
+          offsetY: 50,
+        },
       };
 
+      // return a table to get every argument in the tenmplate
       return [
         this.countStat6Array,
         this.countStat7Array,
@@ -226,6 +246,7 @@ export default {
       ];
     },
 
+    // function te get
     getResultsQuality() {
       this.response11Array = [];
       this.response12Array = [];
@@ -237,11 +258,17 @@ export default {
       this.responsePossibility13Array = [];
       this.responsePossibility14Array = [];
       this.responsePossibility15Array = [];
-      this.countStat11Array = [];
-      this.countStat12Array = [];
-      this.countStat13Array = [];
-      this.countStat14Array = [];
-      this.countStat15Array = [];
+      let avg11 = 0.0;
+      let avg12 = 0.0;
+      let avg13 = 0.0;
+      let avg14 = 0.0;
+      let avg15 = 0.0;
+
+      let sum11 = 0;
+      let sum12 = 0;
+      let sum13 = 0;
+      let sum14 = 0;
+      let sum15 = 0;
 
       for (const response of this.responseSurvey) {
         const response_id_question = response.question_id;
@@ -259,74 +286,86 @@ export default {
           }
         }
       }
-      for (let i = 1; i < 6; i++) {
-        this.countStat11 = 0;
-        this.response11Array.forEach((element11) => {
-          if (element11 == i) this.countStat11++;
-        });
-        this.countStat11Array.push(this.countStat11);
-      }
-      for (let i = 1; i < 6; i++) {
-        this.countStat12 = 0;
-        this.response12Array.forEach((element12) => {
-          if (element12 == i) this.countStat12++;
-        });
-        this.countStat12Array.push(this.countStat12);
-      }
 
-      for (let i = 1; i < 6; i++) {
-        this.countStat13 = 0;
-        this.response13Array.forEach((element13) => {
-          if (element13 == i) this.countStat13++;
-        });
-        this.countStat13Array.push(this.countStat13);
-      }
-      for (let i = 1; i < 6; i++) {
-        this.countStat14 = 0;
-        this.response14Array.forEach((element14) => {
-          if (element14 == i) this.countStat14++;
-        });
-        this.countStat14Array.push(this.countStat14);
-      }
-      for (let i = 1; i < 6; i++) {
-        this.countStat15 = 0;
-        this.response15Array.forEach((element15) => {
-          if (element15 == i) this.countStat15++;
-        });
-        this.countStat15Array.push(this.countStat15);
-      }
+      // iterate through each table to get the average for each question
+      this.response11Array.forEach((element11) => {
+        this.countStat11++;
+        sum11 = sum11 + parseInt(element11);
+      });
+      avg11 = sum11 / this.countStat11;
 
+      this.response12Array.forEach((element12) => {
+        this.countStat12++;
+        sum12 = sum12 + parseInt(element12);
+      });
+      avg12 = sum12 / this.countStat12;
+
+      this.response13Array.forEach((element13) => {
+        this.countStat13++;
+        sum13 = sum13 + parseInt(element13);
+      });
+      avg13 = sum13 / this.countStat13;
+
+      this.response14Array.forEach((element14) => {
+        this.countStat14++;
+        sum14 = sum14 + parseInt(element14);
+      });
+      avg14 = sum14 / this.countStat14;
+
+      this.response15Array.forEach((element15) => {
+        this.countStat15++;
+        sum15 = sum15 + parseInt(element15);
+      });
+      avg15 = sum15 / this.countStat15;
+
+      // put all the averages in the table data
       let series = [
         {
-          name: "Question 11",
-          data: this.countStat11Array,
-        },
-        {
-          name: "Question 12",
-          data: this.countStat12Array,
-        },
-        {
-          name: "Question 13",
-          data: this.countStat13Array,
-        },
-        {
-          name: "Question 14",
-          data: this.countStat14Array,
-        },
-        {
-          name: "Question 15",
-          data: this.countStat15Array,
+          name: "Moyennes",
+          data: [avg11, avg12, avg13, avg14, avg15],
         },
       ];
+
       let chartOptions = {
         chart: {
           type: "radar",
         },
-        title: {
-          text: "Statistiques sur les questions 11, 12, 13, 14, 15",
-        },
+        responsive: [
+          {
+            breakpoint: 991,
+            options: {
+              chart: {
+                width: 500,
+              },
+            },
+          },
+          {
+            breakpoint: 768,
+            options: {
+              chart: {
+                width: 300,
+              },
+            },
+          },
+        ],
         xaxis: {
-          categories: [1, 2, 3, 4, 5],
+          categories: [
+            "Question 1",
+            "Question 2",
+            "Question 3",
+            "Question 4",
+            "Question 5",
+          ],
+          labels: {
+            style: {
+              colors: ["#34495e"],
+              fontSize: "13px",
+              fontFamily: "Arial",
+            },
+          },
+        },
+        markers: {
+          colors: ["#34495e"],
         },
       };
 
@@ -338,86 +377,98 @@ export default {
 
 <template>
   <div class="row">
-    <div class="col-3">
+    <div class="col-lg-3 col-12 nav-style pb-lg-0 pb-4 mb-lg-0 mb-4">
       <NavBar />
     </div>
 
-    <div>
-      <apexchart
-        type="donut"
-        :options="getResponse6710[3]"
-        :series="getResponse6710[0]"
-        :height="200"
-        :width="550"
-      ></apexchart>
-
-      <apexchart
-        type="donut"
-        :options="getResponse6710[4]"
-        :series="getResponse6710[1]"
-        :height="200"
-        :width="500"
-      ></apexchart>
-
-      <apexchart
-        type="donut"
-        :options="getResponse6710[5]"
-        :series="getResponse6710[2]"
-        :height="200"
-        :width="550"
-      ></apexchart>
-
-      <br />
-
-      <!-- {{ getResultsQuality }} -->
-
-      <apexchart
-        type="radar"
-        height="500"
-        :options="getResultsQuality[0]"
-        :series="getResultsQuality[1]"
-      ></apexchart>
+    <div class="col-lg-9 col-12 position">
+      <div class="pt-lg-5 pb-lg-5">
+        <div class="row">
+          <div
+            class="col-lg-5 col-md-7 col-sm-10 col-12 border border-color rounded-3 py-2 my-4 mx-lg-4 mx-auto w-auto"
+          >
+            <p class="text-center">Statistiques sur la questions 6</p>
+            <apexchart
+              type="donut"
+              :options="getResponse6710[3]"
+              :series="getResponse6710[0]"
+              :height="400"
+              :width="450"
+            ></apexchart>
+          </div>
+          <div
+            class="col-lg-5 col-md-7 col-sm-10 col-12 border border-color rounded-3 py-2 my-4 mx-lg-4 mx-auto w-auto"
+          >
+            <p class="text-center">Statistiques sur la questions 7</p>
+            <apexchart
+              type="donut"
+              :options="getResponse6710[4]"
+              :series="getResponse6710[1]"
+              :height="350"
+              :width="450"
+            ></apexchart>
+          </div>
+        </div>
+        <div class="row">
+          <div
+            class="col-lg-5 col-md-7 col-sm-10 col-12 border border-color rounded-3 m-3 py-2 my-4 mx-lg-4 mx-auto w-auto"
+          >
+            <p class="text-center">Statistiques sur la questions 10</p>
+            <apexchart
+              type="donut"
+              :options="getResponse6710[5]"
+              :series="getResponse6710[2]"
+              :height="400"
+              :width="450"
+            ></apexchart>
+          </div>
+          <div
+            class="col-lg-5 col-md-7 col-sm-10 col-12 border border-color rounded-3 py-2 my-4 mx-lg-4 mx-auto w-auto"
+          >
+            <p class="text-center">
+              Statistiques des question 11, 12, 13, 14 et 15
+            </p>
+            <apexchart
+              type="radar"
+              :height="400"
+              :width="450"
+              :options="getResultsQuality[0]"
+              :series="getResultsQuality[1]"
+            ></apexchart>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </template>
 
 <style scoped>
 .row {
-  display: flex;
   margin: 0px;
   padding: 0px;
 }
-.col-3 {
-  width: 20%;
+.nav-style {
   background-color: #34495e;
-  padding-top: 100px;
+  height: 100vh;
 }
 
-#customers {
-  font-family: Arial, Helvetica, sans-serif;
-  border-collapse: collapse;
-  width: 100%;
+.position {
+  overflow: scroll !important;
+  height: 95vh;
 }
 
-#customers td,
-#customers th {
-  border: 1px solid #ddd;
-  padding: 8px;
+.vue-apexcharts {
+  margin: 0px !important;
+  padding: 0px !important;
 }
 
-#customers tr:nth-child(even) {
-  background-color: #f2f2f2;
-}
-
-#customers tr:hover {
-  background-color: #ddd;
-}
-
-#customers th {
-  padding-top: 12px;
-  padding-bottom: 12px;
-  text-align: left;
-  background-color: #34495e;
-  color: white;
+@media only screen and (max-width: 991px) {
+  .nav-style {
+    height: auto;
+    position: sticky;
+  }
+  .position {
+    height: 70vh;
+  }
 }
 </style>
