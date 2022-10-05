@@ -38,7 +38,9 @@ export default {
 </template>
 
 <style scoped>
+
 .popup {
+  color:  #34495e;
   word-wrap: break-word;
   font-size: 20px;
   border: 1px solid black;
