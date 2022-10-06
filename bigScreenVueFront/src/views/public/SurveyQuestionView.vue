@@ -11,7 +11,7 @@ export default {
       surveyResponse: {},
       urlAPi: import.meta.env.VITE_URL_API,
       message: false,
-      token: "WkWnsmkd2gwBDiLXv5rP",
+      token: "",
     };
   },
   components: { Message },
@@ -25,16 +25,8 @@ export default {
         });
       });
     },
-    // checkValidate(){
-    //     for(const element of this.surveyQuestions ) {
-    //         if(this.surveyResponse[element.id]==''){
-    //             window.alert("Tous les champs doivent être remplis")
-    //             return false;
-    //         }
-    //     }
-    //     return true;
-    // },
-    //function to create new userSurvey and save the response to database
+
+    //function to create new userSurvey and save the response in database
     validate() {
       axios
         .post(this.urlAPi + "surveyUser", {
@@ -79,43 +71,70 @@ export default {
         v-bind:value="question.id"
         class="my-5 p-4 rounded bg-customized text-white"
       >
-        <h4 class="text-color mb-4 text-center">
+        <h5 class="text-color mb-4 text-center">
           Question {{ question.id }} / {{ surveyQuestions.length }}
-        </h4>
-        <h5 class="text-color mb-4">{{ question.question }}</h5>
+        </h5>
+        <h4 class="text-color mb-4">{{ question.question }}</h4>
         <div v-if="question.type === 'A'">
           <div class="d-flex flex-wrap border rounded-3 p-4 check-customized">
             <div
               v-for="item in question.response_possibility"
-              class="d-flex me-5 reponse"
+              class="d-flex reponse me-4"
             >
               <input
-                class="me-1"
                 type="radio"
+                class="form-check-input"
+                id="{{ item }}"
+                aria-describedby="{{ item }}"
                 v-bind:value="item"
                 v-model="surveyResponse[question.id]"
-              />{{ item }}
+              />
+              <label for="{{ item }}" class="form-label my-0 ms-1">{{
+                item
+              }}</label>
             </div>
           </div>
         </div>
         <div v-if="question.type === 'B'">
-          <textarea
-            class="form-control rounded-3"
-            maxlength="250"
-            rows="7"
-            v-model="surveyResponse[question.id]"
-          ></textarea>
+          <div v-if="question.id === 20" class="form-floating">
+            <textarea
+              class="form-floating my-0"
+              id="{{ question.question }}"
+              rows="7"
+              v-model="surveyResponse[question.id]"
+            ></textarea>
+          </div>
+
+          <div v-else class="mb-3">
+            <input
+              class="form-control rounded-3"
+              id="{{ question.question }}"
+              aria-describedby="{{ question.question }}"
+              v-model="surveyResponse[question.id]"
+            />
+          </div>
         </div>
         <div v-if="question.type === 'C'">
           <div class="d-flex border rounded-3 p-4 check-customized">
-            <div v-for="item in responseTypeC" class="me-5 reponse">
-              <input
+            <div v-for="item in responseTypeC" class="d-flex reponse me-4">
+              <!-- <input
                 class="text-color me-1"
                 type="radio"
                 v-bind:value="item"
                 v-model="surveyResponse[question.id]"
               />
-              {{ item }}
+              {{ item }} -->
+              <input
+                type="radio"
+                class="form-check-input text-color me-1"
+                id="{{ item }}"
+                aria-describedby="{{ item }}"
+                v-bind:value="item"
+                v-model="surveyResponse[question.id]"
+              />
+              <label for="{{ item }}" class="form-label my-0 ms-1">{{
+                item
+              }}</label>
             </div>
           </div>
         </div>
@@ -148,7 +167,7 @@ export default {
 .body {
   display: flex;
   justify-content: center;
-  background-color: black;
+  background-color: #eff1f9;
 }
 .text-color {
   color: white;

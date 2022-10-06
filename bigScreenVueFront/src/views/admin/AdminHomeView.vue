@@ -66,12 +66,16 @@ export default {
   },
 
   mounted() {
+    //API requests
+    // Get all the questions (id, name, response possibilities & type)
     axios.get(this.urlQuestionSurvey).then((data) => {
       this.questionSurvey = data["data"];
     });
+    // Get all the responses (id, question's id, user's id & response)
     axios.get(this.urlResponseSurvey).then((data) => {
       this.responseSurvey = data["data"];
     });
+    // Get all the users (id, name, email & response)
     axios.get(this.urlUserSurvey).then((data) => {
       this.userSurvey = data["data"];
     });
@@ -246,7 +250,7 @@ export default {
       ];
     },
 
-    // function te get
+    // function te get the averages of responses to question 11, 12, 13, 14 & 15
     getResultsQuality() {
       this.response11Array = [];
       this.response12Array = [];
@@ -350,11 +354,11 @@ export default {
         ],
         xaxis: {
           categories: [
-            "Question 1",
-            "Question 2",
-            "Question 3",
-            "Question 4",
-            "Question 5",
+            "Question 11",
+            "Question 12",
+            "Question 13",
+            "Question 14",
+            "Question 15",
           ],
           labels: {
             style: {

@@ -18,23 +18,21 @@ export default {
     };
   },
   mounted() {
+    // Get all the questions (id, name, response possibilities & type)
     axios.get(this.urlQuestionSurvey).then((data) => {
-      console.log(data);
       this.questionSurvey = data["data"];
-      console.log(this.questionSurvey);
     });
+    // Get all the responses (id, question's id, user's id & response)
     axios.get(this.urlResponseSurvey).then((data) => {
-      console.log(data);
       this.responseSurvey = data["data"];
-      console.log(this.responseSurvey[0]);
     });
+    // Get all the users (id, name, email & response)
     axios.get(this.urlUserSurvey).then((data) => {
-      console.log(data);
       this.userSurvey = data["data"];
-      console.log(this.userSurvey[0]);
     });
   },
   methods: {
+    // Get all responses in allSurveys table with question's id replaced by question's name
     getSurvey() {
       this.allSurveys = [];
       for (const response of this.responseSurvey) {
@@ -44,25 +42,16 @@ export default {
           if (response_id_user === user.id) {
             for (const question of this.questionSurvey) {
               if (question.id == response_id_question) {
-                if (response.question_id == 1) {
-                  this.allSurveys.push({
-                    questionNumber: response.question_id,
-                    questionName: question.question,
-                    questionResponse: user.email,
-                  });
-                } else if (response.question_id > 1) {
-                  this.allSurveys.push({
-                    questionNumber: response.question_id,
-                    questionName: question.question,
-                    questionResponse: response.response,
-                  });
-                }
+                this.allSurveys.push({
+                  questionNumber: response.question_id,
+                  questionName: question.question,
+                  questionResponse: response.response,
+                });
               }
             }
           }
         }
       }
-
       return this.allSurveys;
     },
   },
@@ -77,19 +66,15 @@ export default {
     <div class="col-lg-9 col-12 position">
       <table id="customers">
         <tr class="row">
-          <th class="col-2">Numéro</th>
-          <th class="col-5">Question</th>
+          <th class="col-1">Numéro</th>
+          <th class="col-6">Question</th>
           <th class="col-5">Réponse</th>
         </tr>
         <div class="pos-overflow w-100">
-          <tbody
-            v-for="item in getSurvey()"
-            v-bind:value="item.questionNumber"
-            class="w-100"
-          >
+          <tbody v-for="item in getSurvey()" class="w-100">
             <tr class="w-100">
-              <td class="col-2">{{ item.questionNumber }}</td>
-              <td class="col-5">{{ item.questionName }}</td>
+              <td class="col-1">{{ item.questionNumber }}</td>
+              <td class="col-6">{{ item.questionName }}</td>
               <td class="col-5">{{ item.questionResponse }}</td>
             </tr>
             <div v-if="item.questionNumber == 20">
@@ -104,9 +89,6 @@ export default {
 </template>
 
 <style scoped>
-* {
-  /* padding-top:100px */
-}
 .row {
   margin: 0px;
   padding: 0px;

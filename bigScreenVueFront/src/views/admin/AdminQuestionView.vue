@@ -12,6 +12,7 @@ export default {
     };
   },
   created() {
+    // Get all the questions (id, name, response possibilities & type)
     axios.get(this.urlQuestionSurvey).then((data) => {
       console.log(data);
       this.questionSurvey = data["data"];
@@ -30,19 +31,15 @@ export default {
       <table id="customers">
         <tr class="row">
           <th class="col-3">Numéro</th>
-          <th class="col-6">Question</th>
-          <th class="col-3">Type</th>
+          <th class="col-8">Question</th>
+          <th class="col-1">Type</th>
         </tr>
         <div class="pos-overflow w-100">
-          <tbody
-            v-for="item in questionSurvey"
-            v-bind:value="item.id"
-            class="w-100"
-          >
+          <tbody v-for="item in questionSurvey" class="w-100">
             <tr class="w-100">
               <td class="col-3">{{ item.id }}</td>
-              <td class="col-6">{{ item.question }}</td>
-              <td class="col-3">{{ item.type }}</td>
+              <td class="col-8">{{ item.question }}</td>
+              <td class="col-1">{{ item.type }}</td>
             </tr>
           </tbody>
         </div>

@@ -33,6 +33,7 @@ export default {
     };
   },
   methods: {
+    //Logout
     logout() {
       let token = localStorage.getItem("access_token");
       axios
@@ -43,8 +44,10 @@ export default {
           },
         })
         .then(({ data }) => {
+          //redirection to login page
           this.$router.push("/login");
           this.connexion = false;
+          //remove token from local storage to not allow login to the user
           localStorage.removeItem("nameAdmin");
           localStorage.removeItem("access_token");
         })

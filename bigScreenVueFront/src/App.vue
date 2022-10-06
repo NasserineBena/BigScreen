@@ -11,38 +11,21 @@ export default {
     };
   },
   computed: {
+    //Get current route
     currentRouteName() {
       return this.$route.name;
     },
   },
   methods: {
-    logout() {
-      let token = localStorage.getItem("access_token");
-      axios
-        .post(this.urlApi + "logout", null, {
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: "Bearer " + token,
-          },
-        })
-        .then(({ data }) => {
-          this.$router.push("/surveyQuestion");
-          this.connexion = false;
-          localStorage.removeItem("nameAdmin");
-          localStorage.removeItem("access_token");
-        })
-        .catch((error) => {
-          window.alert("Vous ne pouvez pas se déconnecter ");
-        });
-    },
+    //Redirection in two different ways depending on connexion status
     login() {
       if (this.connexion != null) {
         this.$router.push("/admin/accueil");
       }
       this.$router.push("/login");
     },
+    //Check if the user is connected or not
     getStatusConnexion() {
-      // console.log(localStorage.getItem("access_token"));
       if (localStorage.getItem("access_token") !== null) {
         this.connexion = true;
       } else {
@@ -51,6 +34,7 @@ export default {
     },
   },
   created() {
+    //Call it when vue instance is created to access to data reactively
     this.getStatusConnexion();
   },
 };
@@ -83,7 +67,7 @@ header {
   top: 0;
   width: 100%;
   padding: 30px;
-  background-color: black;
+  background-color: #34495e;
   line-height: 1.5;
   max-height: 100vh;
   font-family: "Michroma";
