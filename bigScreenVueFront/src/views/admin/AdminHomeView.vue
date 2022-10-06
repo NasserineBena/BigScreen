@@ -393,7 +393,7 @@ export default {
           >
             <p class="text-center">Statistiques sur la questions 6</p>
             <apexchart
-              type="donut"
+              type="pie"
               :options="getResponseToQuestionsSixSevenTen[3]"
               :series="getResponseToQuestionsSixSevenTen[0]"
               :height="400"
@@ -405,7 +405,7 @@ export default {
           >
             <p class="text-center">Statistiques sur la questions 7</p>
             <apexchart
-              type="donut"
+              type="pie"
               :options="getResponseToQuestionsSixSevenTen[4]"
               :series="getResponseToQuestionsSixSevenTen[1]"
               :height="350"
@@ -419,7 +419,7 @@ export default {
           >
             <p class="text-center">Statistiques sur la questions 10</p>
             <apexchart
-              type="donut"
+              type="pie"
               :options="getResponseToQuestionsSixSevenTen[5]"
               :series="getResponseToQuestionsSixSevenTen[2]"
               :height="400"

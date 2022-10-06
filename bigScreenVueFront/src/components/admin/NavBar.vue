@@ -1,23 +1,52 @@
 <template>
   <div class="">
     <div class="title mt-4">Bigscreen</div>
-    <div class="content d-flex flex-lg-column flex-row justify-content-around">
-      <div class="mt-lg-5 mt-4 mx-lg-0 mx-2 width text-center">
+    <div class="content d-lg-flex d-none flex-column justify-content-around">
+      <div class="mt-5 width text-center">
         <a class="m-4" href="/admin/accueil"> Accueil</a>
       </div>
-      <div class="mt-4 mx-lg-0 mx-2 width text-center">
+      <div class="mt-4 width text-center">
         <a class="m-4" href="/admin/questionnaire">Questionnaire</a>
       </div>
-      <div class="mt-4 mx-lg-0 mx-2 width text-center">
+      <div class="mt-4 width text-center">
         <a class="m-4" href="/admin/reponses">Réponses</a>
       </div>
-      <div
-        v-on:click.prevent="logout"
-        class="mt-4 mx-lg-0 mx-2 width text-center"
-      >
+      <div v-on:click.prevent="logout" class="mt-4 width text-center">
         <a class="m-4">Déconnexion</a>
       </div>
     </div>
+
+    <nav class="navbar d-lg-none f-block bg-dark mt-4">
+      <div class="container-fluid">
+        <button
+          class="navbar-toggler bg-light"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarTogglerDemo01"
+          aria-controls="navbarTogglerDemo01"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link" href="/admin/accueil"> Accueil</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/admin/questionnaire">Questionnaire</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/admin/reponses">Réponses</a>
+            </li>
+            <li v-on:click.prevent="logout" class="nav-item">
+              <a class="nav-link" href="/admin/reponses">Déconnexion</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
   </div>
 </template>
 <script>
@@ -73,10 +102,12 @@ export default {
   width: fit-content;
   margin: 0 auto;
 }
+
 a {
   text-decoration: none;
   color: white !important;
   font-size: 20px;
+  height: 40px;
 }
 
 a:hover {
