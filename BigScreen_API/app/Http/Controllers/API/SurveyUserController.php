@@ -40,7 +40,7 @@ class SurveyUserController extends Controller
         $data = json_decode($request['request'], true);
         foreach($data as $mydata)
         {
-            if($mydata==""){
+            if($mydata == ""){
                 return $this->sendError('Il faut remplir tous les champs!');
             }
 
@@ -70,30 +70,6 @@ class SurveyUserController extends Controller
         else{
             return $this->sendError("Cet email n'est pas au bon format");
         }
-
-        // $faker= app(Generator::class);
-        // $surveyUser = new SurveyUser;
-        // $surveyUser->email = $request->email;
-        // $surveyUser->token= $faker->regexify('[A-Za-z0-9]{20}');
-        // $surveyUser->save();
-        // return response()->json($surveyUser);
-        // $faker= app(Generator::class);
-        // $validator = $this->validate($request,[
-        //      'email' => 'required|regex:/(.+)@(.+)\.(.+)/i',]);
-        // $validator = \Validator::make($request, [
-        //     'email' => 'required|email'])
-        // $this->validate($request, [
-        //     "1" => 'required|email'
-        // ]);
-        // if(is_numeric($request->2)){
-        //     return response()->json(true)
-        // }
-        // // return response()->json($validate);
-        // $faker= app(Generator::class);
-        // $surveyUser = new SurveyUser;
-        // $surveyUser->email = $request->email;
-        // $surveyUser->token= $faker->regexify('[A-Za-z0-9]{20}');
-        // $surveyUser->save();
 
 
 

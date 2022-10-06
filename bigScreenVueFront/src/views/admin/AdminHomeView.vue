@@ -83,7 +83,7 @@ export default {
 
   computed: {
     // function to get the number of response by category and by question / chart options
-    getResponse6710() {
+    getResponseToQuestionsSixSevenTen() {
       this.response6Array = [];
       this.response7Array = [];
       this.response10Array = [];
@@ -251,7 +251,7 @@ export default {
     },
 
     // function te get the averages of responses to question 11, 12, 13, 14 & 15
-    getResultsQuality() {
+    getResponseToQualityQuestions() {
       this.response11Array = [];
       this.response12Array = [];
       this.response13Array = [];
@@ -394,8 +394,8 @@ export default {
             <p class="text-center">Statistiques sur la questions 6</p>
             <apexchart
               type="donut"
-              :options="getResponse6710[3]"
-              :series="getResponse6710[0]"
+              :options="getResponseToQuestionsSixSevenTen[3]"
+              :series="getResponseToQuestionsSixSevenTen[0]"
               :height="400"
               :width="450"
             ></apexchart>
@@ -406,8 +406,8 @@ export default {
             <p class="text-center">Statistiques sur la questions 7</p>
             <apexchart
               type="donut"
-              :options="getResponse6710[4]"
-              :series="getResponse6710[1]"
+              :options="getResponseToQuestionsSixSevenTen[4]"
+              :series="getResponseToQuestionsSixSevenTen[1]"
               :height="350"
               :width="450"
             ></apexchart>
@@ -420,8 +420,8 @@ export default {
             <p class="text-center">Statistiques sur la questions 10</p>
             <apexchart
               type="donut"
-              :options="getResponse6710[5]"
-              :series="getResponse6710[2]"
+              :options="getResponseToQuestionsSixSevenTen[5]"
+              :series="getResponseToQuestionsSixSevenTen[2]"
               :height="400"
               :width="450"
             ></apexchart>
@@ -436,8 +436,8 @@ export default {
               type="radar"
               :height="400"
               :width="450"
-              :options="getResultsQuality[0]"
-              :series="getResultsQuality[1]"
+              :options="getResponseToQualityQuestions[0]"
+              :series="getResponseToQualityQuestions[1]"
             ></apexchart>
           </div>
         </div>
