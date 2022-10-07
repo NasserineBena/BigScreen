@@ -6,7 +6,7 @@
         <a class="m-4" href="/admin/accueil"> Accueil</a>
       </div>
       <div class="mt-4 width text-center">
-        <a class="m-4" href="/admin/questionnaire">Questionnaire</a>
+        <a class="m-4" href="/admin/questionnaire">Questions</a>
       </div>
       <div class="mt-4 width text-center">
         <a class="m-4" href="/admin/reponses">Réponses</a>
@@ -35,13 +35,13 @@
               <a class="nav-link" href="/admin/accueil"> Accueil</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/admin/questionnaire">Questionnaire</a>
+              <a class="nav-link" href="/admin/questionnaire">Questions</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="/admin/reponses">Réponses</a>
             </li>
             <li v-on:click.prevent="logout" class="nav-item">
-              <a class="nav-link" href="/admin/reponses">Déconnexion</a>
+              <a class="nav-link">Déconnexion</a>
             </li>
           </ul>
         </div>
