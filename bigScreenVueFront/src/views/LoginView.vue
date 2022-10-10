@@ -12,7 +12,7 @@ export default {
   },
   emits: ["getStatusConnexion"],
   methods: {
-    // Login
+    // function to login
     login() {
       if (this.password == "" || this.email == "") {
         window.alert("Mot de passe et email ne doivent pas être vides!");
@@ -56,7 +56,7 @@ export default {
                   v-model="email"
                 />
               </div>
-              <label>Password</label><br />
+              <label>Mot de passe</label><br />
               <div class="input-group input-group-lg">
                 <input
                   class="form-control"

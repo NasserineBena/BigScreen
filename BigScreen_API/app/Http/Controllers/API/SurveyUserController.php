@@ -37,6 +37,7 @@ class SurveyUserController extends Controller
      */
     public function store(Request $request)
     {
+        // check survey and save new userSurvey
         $data = json_decode($request['request'], true);
         foreach($data as $mydata)
         {
@@ -83,6 +84,7 @@ class SurveyUserController extends Controller
      */
     public function show($token)
     {
+        //
         $userSurvey = SurveyUser::where('token','=',$token) -> first();
         return response()->json($userSurvey);
 

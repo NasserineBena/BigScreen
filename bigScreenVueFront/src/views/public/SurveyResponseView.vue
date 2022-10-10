@@ -11,11 +11,13 @@ export default {
     };
   },
   computed: {
+    // function to get the path of router
     currentRouteName() {
       return this.$route.path;
     },
   },
   methods: {
+    // function to get all response of a surveyUser
     getResponse() {
       const token = this.currentRouteName.split("/")[2];
       axios.get(this.urlAPi + "question").then((data) => {

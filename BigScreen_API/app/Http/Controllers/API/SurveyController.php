@@ -38,17 +38,12 @@ class SurveyController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+
     public function store(Request $request)
     {
+        // sauvegarder les sondages
 
         $survey = new Survey;
-        // if($request->question_id == "2"){
-        //     if(is_numeric($request->response)){
-        //         return response()->json("true");
-        //     }
-        //     return  response()->json("false");
-        //     // return response()->json(gettype($request->response))
-        // }
         $survey->question_id = $request->question_id;
         $survey->survey_user_id  = $request->survey_user_id ;
         $survey->response = $request->response;
@@ -62,9 +57,11 @@ class SurveyController extends Controller
      * @param  \App\Models\Survey  $survey
      * @return \Illuminate\Http\Response
      */
+
     public function show($id)
 
     {
+        // chercher les sondage par id de sondé
         $survey = Survey::where('survey_user_id','=', $id)->get();
         return response()->json($survey);
 

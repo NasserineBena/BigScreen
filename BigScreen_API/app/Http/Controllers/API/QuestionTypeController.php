@@ -23,8 +23,6 @@ class QuestionTypeController extends Controller
                 $question->response_possibility = json_decode($question->response_possibility, JSON_UNESCAPED_UNICODE);
             }
         }
-
-        // On retourne toutes les questions en JSON
         return $allQuestions;
     }
 

@@ -11,6 +11,7 @@ export default {
     };
   },
   computed: {
+    // function to get the href of router
     currentRouteName() {
       return window.location.href;
     },
