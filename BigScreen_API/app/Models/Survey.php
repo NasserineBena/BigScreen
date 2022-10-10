@@ -10,25 +10,12 @@ class Survey extends Model
     use HasFactory;
 
     protected $fillable = [
-        'responseOne',
-        'responseTwo',
-        'responseThree',
-        'responseFour',
-        'responseFive',
-        'responseSix',
-        'responseSeven',
-        'responseEight',
-        'responseNine',
-        'responseTen',
-        'responseEleven',
-        'responseTwelve',
-        'responseThirteen',
-        'responseFourteen',
-        'responseFifteen',
-        'responseSixteen',
-        'responseSeventeen',
-        'responseEighteen',
-        'responseNineteen',
-        'responseTwenty',
+        
     ];
+    public function questions(){
+        return $this-> hasOne(QuestionType::class);
+    }
+    public function surveyUser(){
+        return $this-> hasOne(SurveyUser::class);
+    }
 }

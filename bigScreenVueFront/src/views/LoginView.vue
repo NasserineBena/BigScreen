@@ -7,18 +7,18 @@ export default {
     return {
       email: "",
       password: "",
-      urlApi:import.meta.env.VITE_URL_API,
+      urlApi: import.meta.env.VITE_URL_API,
     };
   },
   emits: ["getStatusConnexion"],
   methods: {
+    // Login
     login() {
-      console.log(this.email, this.password);
       if (this.password == "" || this.email == "") {
-        window.alert("Mot de passe et email ne sont pas vide!");
+        window.alert("Mot de passe et email ne doivent pas être vides!");
       } else {
         axios
-          .post(this.urlApi+"login", {
+          .post(this.urlApi + "login", {
             email: this.email,
             password: this.password,
           })
@@ -31,17 +31,16 @@ export default {
             }
           })
           .catch((error) => {
-            window.alert("Mot de passe ou email n'est pas correct!");
+            window.alert("Mot de passe ou email non valide!");
           });
       }
     },
   },
-  created() {},
 };
 </script>
 <template>
   <div class="main">
-    <div class="body" >
+    <div class="body">
       <div>
         <p class="titre">BIGSCREEN</p>
         <form @submit.prevent="login">
@@ -49,18 +48,23 @@ export default {
             <div class="four wide field">
               <label>E-mail</label><br />
               <div class="input-group input-group-lg">
-                <input  class="form-control"  
-                        type="email"  name="email"
-                        placeholder="email@email.com" 
-                        v-model="email">
+                <input
+                  class="form-control"
+                  type="email"
+                  name="email"
+                  placeholder="email@email.com"
+                  v-model="email"
+                />
               </div>
               <label>Password</label><br />
               <div class="input-group input-group-lg">
-                <input  class="form-control"  
-                        type="password"
-                        name="password"
-                        placeholder="password"
-                v-model="password">
+                <input
+                  class="form-control"
+                  type="password"
+                  name="password"
+                  placeholder="password"
+                  v-model="password"
+                />
               </div>
             </div>
             <div class="buttonCenter">
@@ -74,20 +78,19 @@ export default {
 </template>
 <style scoped>
 @import url("https://fonts.googleapis.com/css2?family=Michroma&display=swap");
-.main{
+.main {
   position: fixed;
-  background-color: #DBDFEC;
+  background-color: #dbdfec;
   height: 100% !important;
   width: 100%;
 }
 .body {
-  
   padding: 55px;
   background-color: #34495e;
   position: fixed;
   left: 50%;
   top: 50%;
-  transform: translate(-50%,-50%);
+  transform: translate(-50%, -50%);
   border-radius: 25px;
   font-size: 18px;
   display: flex;
@@ -96,25 +99,23 @@ export default {
 }
 label {
   color: white;
-  margin-top: 10px; 
+  margin-top: 10px;
   font-size: 25px;
 }
 .titre {
   color: #0080ff;
   font-size: 30px;
   text-align: center;
-  
+
   font-family: "Michroma";
 }
-input{
+input {
   min-width: 300px;
 }
 
 .buttonCenter {
   display: flex;
   justify-content: center;
- 
-  
 }
 .buttonConnexion {
   display: flex;

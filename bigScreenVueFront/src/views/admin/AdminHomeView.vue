@@ -66,12 +66,16 @@ export default {
   },
 
   mounted() {
+    //API requests
+    // Get all the questions (id, name, response possibilities & type)
     axios.get(this.urlQuestionSurvey).then((data) => {
       this.questionSurvey = data["data"];
     });
+    // Get all the responses (id, question's id, user's id & response)
     axios.get(this.urlResponseSurvey).then((data) => {
       this.responseSurvey = data["data"];
     });
+    // Get all the users (id, name, email & response)
     axios.get(this.urlUserSurvey).then((data) => {
       this.userSurvey = data["data"];
     });
@@ -79,7 +83,7 @@ export default {
 
   computed: {
     // function to get the number of response by category and by question / chart options
-    getResponse6710() {
+    getResponseToQuestionsSixSevenTen() {
       this.response6Array = [];
       this.response7Array = [];
       this.response10Array = [];
@@ -246,8 +250,8 @@ export default {
       ];
     },
 
-    // function te get
-    getResultsQuality() {
+    // function te get the averages of responses to question 11, 12, 13, 14 & 15
+    getResponseToQualityQuestions() {
       this.response11Array = [];
       this.response12Array = [];
       this.response13Array = [];
@@ -321,7 +325,7 @@ export default {
       // put all the averages in the table data
       let series = [
         {
-          name: "Moyennes",
+          name: "Moyenne",
           data: [avg11, avg12, avg13, avg14, avg15],
         },
       ];
@@ -350,11 +354,11 @@ export default {
         ],
         xaxis: {
           categories: [
-            "Question 1",
-            "Question 2",
-            "Question 3",
-            "Question 4",
-            "Question 5",
+            "Question 11",
+            "Question 12",
+            "Question 13",
+            "Question 14",
+            "Question 15",
           ],
           labels: {
             style: {
@@ -389,9 +393,9 @@ export default {
           >
             <p class="text-center">Statistiques sur la questions 6</p>
             <apexchart
-              type="donut"
-              :options="getResponse6710[3]"
-              :series="getResponse6710[0]"
+              type="pie"
+              :options="getResponseToQuestionsSixSevenTen[3]"
+              :series="getResponseToQuestionsSixSevenTen[0]"
               :height="400"
               :width="450"
             ></apexchart>
@@ -401,9 +405,9 @@ export default {
           >
             <p class="text-center">Statistiques sur la questions 7</p>
             <apexchart
-              type="donut"
-              :options="getResponse6710[4]"
-              :series="getResponse6710[1]"
+              type="pie"
+              :options="getResponseToQuestionsSixSevenTen[4]"
+              :series="getResponseToQuestionsSixSevenTen[1]"
               :height="350"
               :width="450"
             ></apexchart>
@@ -415,9 +419,9 @@ export default {
           >
             <p class="text-center">Statistiques sur la questions 10</p>
             <apexchart
-              type="donut"
-              :options="getResponse6710[5]"
-              :series="getResponse6710[2]"
+              type="pie"
+              :options="getResponseToQuestionsSixSevenTen[5]"
+              :series="getResponseToQuestionsSixSevenTen[2]"
               :height="400"
               :width="450"
             ></apexchart>
@@ -432,8 +436,8 @@ export default {
               type="radar"
               :height="400"
               :width="450"
-              :options="getResultsQuality[0]"
-              :series="getResultsQuality[1]"
+              :options="getResponseToQualityQuestions[0]"
+              :series="getResponseToQualityQuestions[1]"
             ></apexchart>
           </div>
         </div>
