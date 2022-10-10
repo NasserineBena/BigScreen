@@ -17,7 +17,7 @@ export default {
       allSurveys: [],
     };
   },
-  mounted() {
+  created() {
     // Get all the questions (id, name, response possibilities & type)
     axios.get(this.urlQuestionSurvey).then((data) => {
       this.questionSurvey = data["data"];
