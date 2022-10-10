@@ -30,16 +30,16 @@ export default {
     <div class="col-lg-9 col-12 position">
       <table id="customers">
         <tr class="row">
-          <th class="col-md-3 col-2">Numéro</th>
-          <th class="col-8">Question</th>
-          <th class="col-md-1 col-2">Type</th>
+          <th class="col-md-3 col-2 text-break">Numéro</th>
+          <th class="col-8 text-break">Question</th>
+          <th class="col-md-1 col-2 text-break">Type</th>
         </tr>
         <div class="pos-overflow w-100">
           <tbody v-for="item in questionSurvey" class="w-100">
             <tr class="w-100">
-              <td class="col-md-3 col-2">{{ item.id }}</td>
-              <td class="col-8">{{ item.question }}</td>
-              <td class="col-md-1 col-2">{{ item.type }}</td>
+              <td class="col-md-3 col-2 text-break">{{ item.id }}</td>
+              <td class="col-8 text-break">{{ item.question }}</td>
+              <td class="col-md-1 col-2 text-break">{{ item.type }}</td>
             </tr>
           </tbody>
         </div>

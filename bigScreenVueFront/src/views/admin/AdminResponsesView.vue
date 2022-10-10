@@ -66,16 +66,16 @@ export default {
     <div class="col-lg-9 col-12 position">
       <table id="customers">
         <tr class="row">
-          <th class="col-1">Numéro</th>
-          <th class="col-6">Question</th>
-          <th class="col-5">Réponse</th>
+          <th class="col-2 text-break">Numéro</th>
+          <th class="col-5 text-break">Question</th>
+          <th class="col-5 text-break">Réponse</th>
         </tr>
-        <div class="pos-overflow w-100">
-          <tbody v-for="item in getSurvey()" class="w-100">
-            <tr class="w-100">
-              <td class="col-1">{{ item.questionNumber }}</td>
-              <td class="col-6">{{ item.questionName }}</td>
-              <td class="col-5">{{ item.questionResponse }}</td>
+        <div class="pos-overflow">
+          <tbody v-for="item in getSurvey()">
+            <tr class="row">
+              <td class="col-2 text-break">{{ item.questionNumber }}</td>
+              <td class="col-5 text-break">{{ item.questionName }}</td>
+              <td class="col-5 text-break">{{ item.questionResponse }}</td>
             </tr>
             <div v-if="item.questionNumber == 20">
               <br />
@@ -95,12 +95,6 @@ export default {
 }
 .style {
   background-color: #34495e;
-}
-.col-3 {
-  /* display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center; */
 }
 
 #customers {

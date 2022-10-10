@@ -117,13 +117,6 @@ export default {
         <div v-if="question.type === 'C'">
           <div class="d-flex border rounded-3 p-4 check-customized">
             <div v-for="item in responseTypeC" class="d-flex reponse me-4">
-              <!-- <input
-                class="text-color me-1"
-                type="radio"
-                v-bind:value="item"
-                v-model="surveyResponse[question.id]"
-              />
-              {{ item }} -->
               <input
                 type="radio"
                 class="form-check-input text-color me-1"
