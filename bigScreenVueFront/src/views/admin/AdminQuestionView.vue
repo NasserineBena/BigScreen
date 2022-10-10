@@ -30,16 +30,16 @@ export default {
     <div class="col-lg-9 col-12 position">
       <table id="customers">
         <tr class="row">
-          <th class="col-3">Numéro</th>
+          <th class="col-md-3 col-2">Numéro</th>
           <th class="col-8">Question</th>
-          <th class="col-1">Type</th>
+          <th class="col-md-1 col-2">Type</th>
         </tr>
         <div class="pos-overflow w-100">
           <tbody v-for="item in questionSurvey" class="w-100">
             <tr class="w-100">
-              <td class="col-3">{{ item.id }}</td>
+              <td class="col-md-3 col-2">{{ item.id }}</td>
               <td class="col-8">{{ item.question }}</td>
-              <td class="col-1">{{ item.type }}</td>
+              <td class="col-md-1 col-2">{{ item.type }}</td>
             </tr>
           </tbody>
         </div>
@@ -87,6 +87,12 @@ export default {
 }
 .pos-overflow {
   overflow: scroll;
-  height: 92vh;
+  height: 75vh;
+}
+@media (min-width: 991px) {
+  .pos-overflow {
+    overflow: scroll;
+    height: 92vh;
+  }
 }
 </style>

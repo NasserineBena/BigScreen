@@ -325,7 +325,7 @@ export default {
       // put all the averages in the table data
       let series = [
         {
-          name: "Moyennes",
+          name: "Moyenne",
           data: [avg11, avg12, avg13, avg14, avg15],
         },
       ];
